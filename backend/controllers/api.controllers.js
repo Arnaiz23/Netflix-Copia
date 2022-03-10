@@ -1,6 +1,7 @@
 'use strict'
 
 var Pelicula = require('../models/Peliculas');
+var Usuario = require('../models/Usuarios');
 
 var controller = {
     prueba: (req,res) => {
@@ -58,6 +59,9 @@ var controller = {
 
         newPelicula.title = body.title;
         newPelicula.year = body.year;
+        newPelicula.informacion = body.informacion;
+        newPelicula.generos = body.generos;
+        newPelicula.duracion = body.duracion;
 
         newPelicula.save((err, pelicula) => {
             if(err || !pelicula){
@@ -115,6 +119,34 @@ var controller = {
             });
         })
 
+    },
+    getUsuarios : (req, res) => {
+        Usuario.find((err, usuarios) => {
+            if (err) {
+                return res.status(500).send({
+                    status: "error",
+                    message: "Ha habido un error"
+                });
+            }
+
+            if (!usuarios) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "No hay usuarios"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                usuarios
+            });
+        });
+    },
+    newUsuario : (req, res) => {
+        const body = req.body;
+        const newUsuario = new Usuario();
+
+        
     }
 }
 

@@ -4,12 +4,13 @@
   "description": "Netflix Clone Backend",
   "main": "index.js",
   "scripts": {
-    "start" : "node index.js",
-    "dev" : "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Adrian Arnaiz",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "connect-multiparty": "^2.2.0",
     "express": "^4.17.3",

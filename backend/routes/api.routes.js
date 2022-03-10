@@ -16,4 +16,7 @@ router.post("/peliculas" ,controllers.newPelicula); //Nueva pelicula
 router.delete("/peliculas/:id" ,controllers.deletePelicula); //Eliminar pelicula
 router.put("/peliculas/:id" ,controllers.updatePelicula); //Modificar pelicula
 
+// * Rutas usuarios
+router.get("/usuarios" , controllers.getUsuarios); //Obtener todos las usuarios
+
 module.exports = router;

@@ -15,6 +15,18 @@ var peliculaSchema = new Schema({
     year : {
         type: Number,
         required: true
+    },
+    informacion : {
+        type: String,
+        required: true
+    },
+    generos : {
+        type: Array,
+        required: true
+    },
+    duracion : {
+        type: String,
+        required: true
     }
 });
 
