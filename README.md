@@ -1,4 +1,4 @@
-# Clon de netflix con NodeJS, MongoDB y React
+# Clon de Netflix con NodeJS, MongoDB y React
 
 ## Información extra
 
