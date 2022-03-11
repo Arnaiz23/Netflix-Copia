@@ -1,7 +1,8 @@
 'use strict'
 
 var Pelicula = require('../models/Peliculas');
-var Usuario = require('../models/Usuarios');
+var Cuenta = require('../models/Cuenta');
+var Usuario = require('../models/Usuario');
 
 var validator = require('validator');
 var jwt = require('jsonwebtoken');
@@ -148,8 +149,8 @@ var controller = {
         })
 
     },
-    getUsuarios: (req, res) => {
-        Usuario.find((err, usuarios) => {
+    getCuentas: (req, res) => {
+        Cuenta.find((err, cuentas) => {
             if (err) {
                 return res.status(500).send({
                     status: "error",
@@ -157,28 +158,27 @@ var controller = {
                 });
             }
 
-            if (!usuarios) {
+            if (!cuentas) {
                 return res.status(404).send({
                     status: "error",
-                    message: "No hay usuarios"
+                    message: "No hay cuentas"
                 });
             }
 
             return res.status(200).send({
                 status: "success",
-                usuarios
+                cuentas
             });
         });
     },
-    newUsuario: async(req, res) => {
+    newCuenta: async (req, res) => {
         const body = req.body;
 
         try {
 
-            var validate_usuario = !validator.isEmpty(body.usuario);
             var validate_password = !validator.isEmpty(body.password);
             var validate_email = (!validator.isEmpty(body.email) && validator.isEmail(body.email));
-            // var validate_miLista = !validator.isEmpty(body.miLista);
+            var validate_facturacion = !validator.isEmpty(body.facturacion);
 
         } catch (error) {
             res.status(404).send({
@@ -188,25 +188,127 @@ var controller = {
         }
 
 
-        if (validate_usuario && validate_password && validate_email) {
+        if (validate_facturacion && validate_password && validate_email) {
 
-            const newUsuario = new Usuario({usuario: body.usuario, password: await Usuario.encrypt(body.password), email: body.email, miLista: body.miLista});
+            const newUsuario = new Cuenta({ usuarios: [], password: await Cuenta.encrypt(body.password), email: body.email, facturacion: body.facturacion });
 
-            res.status(200).send({
-                status: "success",
-                message: newUsuario
+            newUsuario.save((err, cuenta) => {
+
+                if (err || !cuenta) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "No se ha podido crear la cuenta"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    message: cuenta
+                });
+
             });
 
         } else {
 
             res.status(404).send({
                 status: "error",
-                message: "Los datos no son validos;"
+                message: "Los datos no son validos!!!"
             });
 
         }
 
 
+    },
+    // ! Falta por hacer
+    updateCuenta: async (req, res) => {
+        const usuarioId = req.params.id;
+        const body = req.body;
+
+        Cuenta.findByIdAndUpdate(usuarioId, body, (err, usuario) => {
+            if (err || !usuario) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "Hay un error al actualizar!!!"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                message: usuario
+            });
+
+        })
+
+
+    },
+    // * Creacion de un usuario
+    newUsuario: (req, res) => {
+        const body = req.body;
+
+        try {
+
+            var validate_nombre = !validator.isEmpty(body.nombre);
+
+        } catch (error) {
+            return res.status(404).send({
+                status: "error",
+                message: "Faltan datos!!!"
+            });
+        }
+
+        if (validate_nombre) {
+
+            var usuario = new Usuario({ nombre: body.nombre, miLista: [] });
+
+            usuario.save((err, usuario) => {
+                if (err || !usuario) {
+
+                    return res.status(404).send({
+                        status: "error",
+                        message: "No se ha podido crear el usuario"
+                    });
+
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    message: usuario
+                });
+
+            });
+
+
+
+        } else {
+
+            return res.status(404).send({
+                status: "error",
+                message: "Los datos no son validos!!!"
+            });
+
+        }
+    },
+    getUsuarios: (req, res) => {
+        Usuario.find((err, usuarios) => {
+            if (err) {
+                return res.status(500).send({
+                    status: "error",
+                    message: "Hay un error !!!"
+                });
+            }
+
+            if (!usuarios) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "No hay usuarios!!!"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                message: usuarios
+            });
+        });
     }
 }
 
