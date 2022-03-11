@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/d0135093a4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="inicioLogin">
+        <div id="incioLoginOscuro">
+            <div id="inicioHeader">
+                <img src="./images/Icono.png" alt="icono netflix" class="iconoN">
+            </div>
+            <div id="inicioMain">
+                <div id="login">
+                    <h2>Iniciar sesión</h2>
+                    <input type="text" placeholder="Correo electrónico o número de teléfono" id="loginCorreo"
+                        class="incorrectLoginInput" />
+                    <p class="incorrectLoginWarning">Escribe un número de teléfono o un correo válidos.</p>
+                    <div id="loginPassword">
+                        <input type="password" placeholder="Contraseña" class="incorrectLoginInput" />
+                        <p id="passwordMostrar">MOSTRAR</p>
+                        <p id="passwordOcultar">OCULTAR</p>
+                    </div>
+                    <p class="incorrectLoginWarning">La contraseña debe tener entre 4 y 60 caracteres.</p>
+                    <input type="submit" value="Iniciar sesión" class="btn btn-danger" id="loginEnviar">
+
+                    <div id="loginOpciones">
+                        <div id="loginRecuerdame">
+                            <input type="checkbox" id="recuerdame" />
+                            <label for="recuerdame">Recuérdame</label>
+                        </div>
+                        <a href="">¿Necesitas ayuda?</a>
+                    </div>
+                    <a href="" id="loginFacebook"> Iniciar sesión con Facebook</a>
+                    <p id="loginRegisterInfo">¿Todavía sin Netflix? <a href="">Suscríbete ya</a>.</p>
+                    <p id="loginCatpcha">Esta página utiliza Google reCAPTCHA para garantizar que no eres un robot. <a href="">Más
+                            información</a></p>
+                </div>
+            </div>
+            <div id="inicioFooter">
+                <div>
+                    <p>¿Preguntas? Llama al <span>900 822 376</span></p>
+                </div>
+                <div id="inicioOpciones">
+                    <a href="">Preguntas frecuentes</a>
+                    <a href="">Centro de ayuda</a>
+                    <a href="">Términos de uso</a>
+                    <a href="">Privacidad</a>
+                    <a href="">Preferencias de cookies</a>
+                    <a href="">Información corporativa</a>
+                </div>
+                <div>
+                    <div id="icon-world">
+                        <select id="inicioIdioma">
+                            <option value="spa">Español</option>
+                            <option value="eng">English</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

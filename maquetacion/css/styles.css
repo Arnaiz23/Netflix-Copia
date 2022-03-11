@@ -1,0 +1,280 @@
+@import url("./normalize.css");
+
+#inicioLogin{
+    background-image: url("../images/inicioLogin.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* height: 100vh;
+    width: 100vw; */
+}
+
+#incioLoginOscuro{
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "login login login"
+        "footer footer footer"
+    ;
+    grid-template-columns: repeat(3,1fr);
+    /* grid-template-rows: repeat(3,auto); */
+    grid-template-rows: 88px 775px 260px;
+    width: 100%;
+    /* height: 100vh; */
+    background-color: rgba(0,0,0, .4);
+    z-index: 2;
+}
+
+/* * -----------------INICIO DE SESION HEADER------------------------- */
+#inicioHeader{
+    grid-area: header;
+}
+
+.iconoN{
+    width: 200px;
+    margin-top: -13px;
+}
+/* * ------------------------------------------------------------------ */
+
+/* * -----------------INICIO DE SESION MAIN------------------------- */
+#inicioMain{
+    grid-area: login;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login{
+    background-color: rgba(0,0,0, .8);
+    width: 50%;
+    min-height: 660px;
+    padding: 50px;
+    margin-top: -100px;
+    max-width: 450px;
+}
+
+#login h2{
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+#login input{
+    width: 90%;
+}
+
+#login input[type="text"],#login input[type="password"]{
+    padding: 14px;
+    margin: 8px;
+    background-color: #333;
+    border: none;
+    color: #ddd;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#login input[type="text"]:focus,#login input[type="password"]:focus{
+    outline: none;
+    background-color: #454545;
+}
+
+#loginPassword{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#login input[type="password"]:focus ~ #passwordMostrar{
+    display: block;
+}
+
+#loginPassword p{
+    display: none;
+    position: absolute;
+    color: #fff;
+    right: 35%;
+    color: #888;
+    cursor: pointer;
+}
+
+.incorrectLoginInput{
+    border-bottom: 2px solid #e87c03 !important;
+}
+
+.incorrectLoginWarning{
+    color: #e87c03;
+    font-size: 12px;
+    padding-left: 14px;
+}
+
+#login #loginCorreo{
+    margin-top: 35px;
+}
+
+#login #loginEnviar{
+    margin-left: 8px;
+    margin-top: 30px;
+}
+
+#loginOpciones{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px auto;
+    margin-left: 8px;
+}
+
+#loginOpciones #loginRecuerdame{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#loginOpciones #loginRecuerdame label{
+    color: #888;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+#loginOpciones #loginRecuerdame #recuerdame{
+    accent-color: #737373;
+}
+
+#loginOpciones a{
+    color: #aaa;
+    font-size: 13px;
+}
+
+#loginFacebook{
+    color: #888;
+    font-size: 13px;
+    margin: 20px 0 10px;
+    margin-left: 8px;
+    display: block;
+}
+
+#loginFacebook::before{
+    content: '\f082';
+    color: #3b5998;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+#loginRegisterInfo{
+    color: #888;
+    margin-left: 8px;
+}
+
+#loginRegisterInfo a{
+    color: #eee;
+    font-weight: 500;
+}
+
+#loginRegisterInfo a:hover{
+    text-decoration: underline;
+}
+
+#loginCatpcha{
+    color: #888;
+    font-size: 13px;
+    margin-top: 10px;
+    width: 90%;
+    margin-left: 8px;
+}
+
+#loginCatpcha a{
+    color: #0071eb;
+}
+
+#loginCatpcha a:hover{
+    text-decoration: underline;
+}
+
+/* * ------------------------------------------------------------------ */
+
+/* * ----------------------------BOTONES------------------------- */
+
+.btn{
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 13px;
+}
+
+.btn-danger{
+    background-color: #e50914;
+}
+
+/* * ------------------------------------------------------------------ */
+
+/* * -----------------INICIO DE SESION FOOTER------------------------- */
+#inicioFooter{
+    grid-area: footer;
+    background-color: rgba(0,0,0, .7);   
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 25px 30px;
+}
+
+#inicioFooter a, #inicioFooter p{
+    color: #777;
+}
+
+#inicioFooter div{
+    margin-bottom: 25px;
+}
+
+#inicioFooter span{
+    cursor: pointer;
+}
+
+#inicioFooter #inicioOpciones{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85%;
+    flex-wrap: wrap;
+}   
+
+#inicioFooter #inicioOpciones a{
+    font-size: 13px;
+    margin-right: 86px;
+    margin-bottom: 15px;
+}
+
+#inicioFooter #inicioOpciones a:hover, #inicioFooter span:hover{
+    text-decoration: underline;
+}
+
+#inicioFooter #inicioOpciones a:last-child{
+    margin-left: -15px;
+}
+
+
+#inicioFooter #inicioIdioma{
+    color: #888;
+    background: transparent;
+    border: none;
+}
+
+#inicioFooter #icon-world{
+    background-color: #000;
+    border: 1px solid #444;
+    padding: 10px;
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#inicioFooter #icon-world::before{
+    content: '\f0ac';
+    color: #888;
+}
+/* * ------------------------------------------------------------------ */
