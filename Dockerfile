@@ -11,4 +11,4 @@ COPY ./backend/ /usr/src/app
 
 EXPOSE 3900
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "start" ]
