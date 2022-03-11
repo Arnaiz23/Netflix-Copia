@@ -2,10 +2,7 @@
 
 ## Información extra
 
-    1. Validación en el backend
-    2. Usuarios en el backend
-    3. Apartado imagen en Peliculas
-    4. Añadir varias peliculas/series una vez el backend entre en produccion
+    1. Añadir varias peliculas/series una vez el backend entre en produccion
 
 ### Cuenta
 

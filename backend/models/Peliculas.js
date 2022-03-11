@@ -13,7 +13,7 @@ var peliculaSchema = new Schema({
         required: true
     },
     year : {
-        type: Number,
+        type: String,
         required: true
     },
     informacion : {
@@ -27,6 +27,9 @@ var peliculaSchema = new Schema({
     duracion : {
         type: String,
         required: true
+    },
+    image : {
+        type: String
     }
 });
 

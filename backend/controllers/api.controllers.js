@@ -6,32 +6,59 @@ var Usuario = require('../models/Usuario');
 
 var validator = require('validator');
 var jwt = require('jsonwebtoken');
+var fs = require("fs");
+var path = require("path");
 
 var controller = {
     prueba: (req, res) => {
         res.send("Hello World");
     },
     getPeliculas: (req, res) => {
-        Pelicula.find((err, peliculas) => {
-            if (!peliculas) {
-                return res.status(404).send({
-                    status: "error",
-                    messsage: "No hay películas actualmente"
-                });
-            }
+        const last = req.params.last;
 
-            if (err) {
-                return res.status(500).send({
-                    status: "error",
-                    messsage: "Ha habido un error"
+        if(last){
+            Pelicula.find((err, peliculas) => {
+                if (!peliculas) {
+                    return res.status(404).send({
+                        status: "error",
+                        messsage: "No hay películas actualmente"
+                    });
+                }
+    
+                if (err) {
+                    return res.status(500).send({
+                        status: "error",
+                        messsage: "Ha habido un error"
+                    });
+                }
+    
+                return res.status(200).send({
+                    status: "success",
+                    messsage: peliculas
                 });
-            }
-
-            return res.status(200).send({
-                status: "success",
-                messsage: peliculas
+            }).limit(6);
+        }else{
+            Pelicula.find((err, peliculas) => {
+                if (!peliculas) {
+                    return res.status(404).send({
+                        status: "error",
+                        messsage: "No hay películas actualmente"
+                    });
+                }
+    
+                if (err) {
+                    return res.status(500).send({
+                        status: "error",
+                        messsage: "Ha habido un error"
+                    });
+                }
+    
+                return res.status(200).send({
+                    status: "success",
+                    messsage: peliculas
+                });
             });
-        });
+        }
     },
     getPelicula: (req, res) => {
         const id = req.params.id;
@@ -149,6 +176,112 @@ var controller = {
         })
 
     },
+    searchPeliculas : (req,res) => {
+        const search = req.params.search;
+
+        Pelicula.find({
+            "$or": [
+                { "title": { "$regex": search, "$options": "i" } },
+                { "year": { "$regex": search, "$options": "i" } }
+            ]
+        }).sort([['year', 'descending']]).exec((err, peliculas) => {
+            if (err) {
+                return res.status(500).send({
+                    status: "error",
+                    message: "Hay un error"
+                });
+            }
+
+            if (!peliculas || peliculas.length <= 0) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "No existen peliculas con ese dato"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                peliculas
+            });
+        });
+    },
+    getImage : (req, res) => {
+        var file = req.params.image;
+        var path_file = './upload/peliculas/' + file;
+
+        fs.exists(path_file, (exists) => {
+            if (exists) {
+                return res.sendFile(path.resolve(path_file));
+            } else {
+                return res.status(404).send({
+                    status: "error",
+                    message: "La imagen no existe"
+                });
+            }
+        });
+    },
+    upload: (req, res) => {
+
+        // Recoger el fichero de la peticion
+        var file_name = 'Imagen no subida...';
+
+        if (!req.files) {
+            return res.status(404).send({
+                status: "error",
+                message: file_name
+            });
+        }
+
+        // Conseguir el nombre y la extension
+        var file_path = req.files.file0.path; //file0 es un nombre generico que le pondremos pq algunas librerias del frontend envian ese nombre
+        var file_split = file_path.split("/");
+
+        // Nombre del archivo
+        var file_name = file_split[2];
+
+        // Extension del fichero
+        var extension_split = file_name.split(".");
+        var file_ext = extension_split[1];
+
+
+        // Comprobar la extension, solo imagenes, si es valida borrar el fichero
+        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg') {
+            // borrar el archivo subido
+            fs.unlink(file_path, (err) => {
+                return res.status(200).send({
+                    status: "error",
+                    message: "La extension de la imagen no es valida"
+                });
+            });  //Borrar el fichero
+        } else {
+            // Sacando el id de la url
+            var peliculaId = req.params.id;
+
+            if (peliculaId) {
+                // Buscar el articulo, asignarle el nombre de la imagen y actualizarlo
+                Pelicula.findOneAndUpdate({ _id: peliculaId }, { image: file_name }, { new: true }, (err, pelicula) => {
+                    if (err || !pelicula) {
+                        return res.status(200).send({
+                            status: "error",
+                            message: "Error al guardar la imagen de la pelicula!!!"
+                        });
+                    }
+
+                    return res.status(200).send({
+                        status: "success",
+                        pelicula
+                    });
+                });
+            }else{  //En caso de que no sepa el id
+                return res.status(200).send({
+                    status: "success",
+                    image: file_name
+                });
+            }
+
+        }
+    },
+    // * CUENTAS
     getCuentas: (req, res) => {
         Cuenta.find((err, cuentas) => {
             if (err) {
@@ -169,6 +302,30 @@ var controller = {
                 status: "success",
                 cuentas
             });
+        });
+    },
+    getCuenta: (req, res) => {
+        const cuentaId = req.params.id;
+
+        Cuenta.findById(cuentaId, (err, cuenta) => {
+            if(err){
+                res.status(500).send({
+                    status: "error",
+                    message: "Hay un error!!!"
+                });
+            }
+
+            if(!cuenta){
+                res.status(404).send({
+                    status: "error",
+                    message: "No existe ese usuario"
+                })
+            }
+
+            res.status(200).send({
+                status: "success",
+                message: cuenta
+            })
         });
     },
     newCuenta: async (req, res) => {
@@ -219,7 +376,6 @@ var controller = {
 
 
     },
-    // ! Falta por hacer
     updateCuenta: async (req, res) => {
         const usuarioId = req.params.id;
         const body = req.body;
@@ -241,7 +397,24 @@ var controller = {
 
 
     },
-    // * Creacion de un usuario
+    deleteCuenta: (req, res) => {
+        const cuentaId = req.params.id;
+
+        Cuenta.findByIdAndDelete(cuentaId, (err, cuenta) => {
+            if (err || !cuenta) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "Hay un error al eliminar!!!"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                message: cuenta
+            });
+        });
+    },
+    // * USUARIOS
     newUsuario: (req, res) => {
         const body = req.body;
 
@@ -307,6 +480,66 @@ var controller = {
             return res.status(200).send({
                 status: "success",
                 message: usuarios
+            });
+        });
+    },
+    getUsuario : (req, res) => {
+        const usuarioId = req.params.id;
+
+        Usuario.findById(usuarioId, (err, usuario) => {
+            if (err) {
+                return res.status(500).send({
+                    status: "error",
+                    message: "Hay un error !!!"
+                });
+            }
+
+            if (!usuario) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "No existe ese usuario!!!"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                message: usuario
+            });
+        })
+    },
+    deleteUsuario : (req, res) => {
+        const usuarioId = req.params.id;
+
+        Usuario.findByIdAndDelete(usuarioId,(err, usuario) => {
+            if(err || !usuario){
+                return res.status(404).send({
+                    status: "error",
+                    message: "Hay un error al eliminar!!!"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                message: usuario
+            });
+
+        });
+    },
+    updateUsuario : (req, res) => {
+        const usuarioId = req.params.id;
+        const body = req.body;
+
+        Usuario.findByIdAndUpdate(usuarioId, body, (err, usuario) => {
+            if(err || !usuario){
+                return res.status(404).send({
+                    status: "error",
+                    message: "Hay un error al modificar!!!"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                message: usuario
             });
         });
     }

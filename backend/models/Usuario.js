@@ -19,7 +19,10 @@ var usuarioSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "Pelicula"
         }
-    ]
+    ],
+    image : {
+        type: String
+    }
 });
 
 module.exports = mongoose.model("Usuario", usuarioSchema);
