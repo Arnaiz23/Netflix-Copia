@@ -9,14 +9,6 @@ var usuarioSchema = new Schema({
         type: Schema.ObjectId,
         auto: true
     },
-    nombre : {
-        type: String,
-        required: true
-    },
-    apellidos : {
-        type: String,
-        required: true
-    },
     usuario : {
         type: String,
         required: true
