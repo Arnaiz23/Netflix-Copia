@@ -13,59 +13,134 @@
 </head>
 
 <body>
-    <div id="inicioLogin">
-        <div id="incioLoginOscuro">
-            <div id="inicioHeader">
+    <div id="inicioLogin" class="inicioLoginRegister">
+        <div id="inicioLoginOscuro">
+            <header id="inicioHeader">
                 <img src="./images/Icono.png" alt="icono netflix" class="iconoN">
-            </div>
-            <div id="inicioMain">
-                <div id="login">
-                    <h2>Iniciar sesión</h2>
-                    <input type="text" placeholder="Correo electrónico o número de teléfono" id="loginCorreo"
-                        class="incorrectLoginInput" />
-                    <p class="incorrectLoginWarning">Escribe un número de teléfono o un correo válidos.</p>
-                    <div id="loginPassword">
-                        <input type="password" placeholder="Contraseña" class="incorrectLoginInput" />
-                        <p id="passwordMostrar">MOSTRAR</p>
-                        <p id="passwordOcultar">OCULTAR</p>
-                    </div>
-                    <p class="incorrectLoginWarning">La contraseña debe tener entre 4 y 60 caracteres.</p>
-                    <input type="submit" value="Iniciar sesión" class="btn btn-danger" id="loginEnviar">
-
-                    <div id="loginOpciones">
-                        <div id="loginRecuerdame">
-                            <input type="checkbox" id="recuerdame" />
-                            <label for="recuerdame">Recuérdame</label>
-                        </div>
-                        <a href="">¿Necesitas ayuda?</a>
-                    </div>
-                    <a href="" id="loginFacebook"> Iniciar sesión con Facebook</a>
-                    <p id="loginRegisterInfo">¿Todavía sin Netflix? <a href="">Suscríbete ya</a>.</p>
-                    <p id="loginCatpcha">Esta página utiliza Google reCAPTCHA para garantizar que no eres un robot. <a href="">Más
-                            información</a></p>
-                </div>
-            </div>
-            <div id="inicioFooter">
-                <div>
-                    <p>¿Preguntas? Llama al <span>900 822 376</span></p>
-                </div>
-                <div id="inicioOpciones">
-                    <a href="">Preguntas frecuentes</a>
-                    <a href="">Centro de ayuda</a>
-                    <a href="">Términos de uso</a>
-                    <a href="">Privacidad</a>
-                    <a href="">Preferencias de cookies</a>
-                    <a href="">Información corporativa</a>
-                </div>
-                <div>
-                    <div id="icon-world">
-                        <select id="inicioIdioma">
+                <div class="headerDerecha">
+                    <div class="icon-world" id="icon-world-header">
+                        <select class="inicioIdioma">
                             <option value="spa">Español</option>
                             <option value="eng">English</option>
                         </select>
                     </div>
+                    <a href="login.html" class="btn btn-danger" id="btn-login">Iniciar sesión</a>
                 </div>
             </div>
+            <div id="inicioMain" class="inicioMainLogin">
+                <div class="centerLogin">
+                    <h2>Todas las películas y series que desees, y mucho más.</h2>
+                    <p class="loginSubtitle">Disfruta donde quieras. Cancela cuando quieras.</p>
+                    <p class="loginSubSubtitle">¿Quieres ver algo ya? Escribe tu correo para crear una suscripción a
+                        Netflix o reactivarla.</p>
+                    <div class="RegisterForm">
+                        <input type="text" name="" id="" placeholder="Correo electrónico" class="inputRegister" />
+                        <input type="submit" value="Empezar >" class="btn btn-danger" id="loginRegisterInput" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="registerLogin">
+        <div class="cardRegister">
+            <div class="textoCardRegister">
+                <h3 class="subheaderLogin">Disfruta de netflix en tu TV.</h3>
+                <p class="subParrafo">Smart TV, Playstation, Xbox, Chromecast, Apple TV, reproductores Blu-ray y muchos más.</p>
+            </div>
+            <div class="imagenCardRegister">
+                <img src="./images/tv.png" alt="tv netflix"  class="imgRegisterLogin"/>
+            </div>
+        </div>
+    </div>
+    <div class="registerLogin">
+        <div class="cardRegister">
+            <div class="imagenCardRegister">
+                <img src="./images/strangers.jpg" alt="Strangers Things" class="imgRegisterLogin"/>
+            </div>
+            <div class="textoCardRegister">
+                <h3 class="subheaderLogin">Descárgate tus series favoritas para verlas sin conexión.</h3>
+                <p class="subParrafo">Guarda tus títulos favoritos fácilmente para que siempre tengas algo para ver.</p>
+            </div>
+        </div>
+    </div>
+    <div class="registerLogin">
+        <div class="cardRegister">
+            <div class="textoCardRegister">
+                <h3 class="subheaderLogin">Disfruta en todas partes.</h3>
+                <p class="subParrafo">Reproduce en streaming todas las películas y series en tu móvil, tableta, ordenador y TV sin pagar más.</p>
+            </div>
+            <div class="imagenCardRegister">
+                <img src="./images/tv2.png" alt="tv netflix" class="imgRegisterLogin"/>
+            </div>
+        </div>
+    </div>
+    <div class="registerLogin" >
+        <div class="cardRegister">
+            <div class="imagenCardRegister">
+                <img src="./images/infantil.png" alt="infantil netflix" class="imgRegisterLogin"/>
+            </div>
+            <div class="textoCardRegister">
+                <h3 class="subheaderLogin">Crea perfiles infantiles.</h3>
+                <p class="subParrafo">Deja que los niños vivan aventuras con sus personajes favoritos en un espacio diseñado exclusivamente para ellos, gratis con tu suscripción.</p>
+            </div>
+        </div>
+    </div>
+    <div class="registerLoginPreguntas" id="registerLoginLast">
+        <h2 class="subheaderLogin">Preguntas frecuentes</h2>
+        <ul class="preguntasRegister">
+            <li>¿Qué es Netflix?</li>
+            <div class="respuestaRegister respuestaRegisterOn">
+                <p>Netflix es un servicio de streaming que ofrece una amplia variedad de series, películas, títulos de anime, documentales y otros contenidos premiados en miles de dispositivos conectados a internet.</p>
+                <p>Puedes ver todo el contenido que quieras, cuando quieras y sin un solo anuncio por una tarifa mensual reducida. ¡Siempre hay algo nuevo que descubrir, y cada semana se añaden nuevas series y películas!</p>
+            </div>
+            <li>¿Cuánto cuesta Netflix?</li>
+            <div class="respuestaRegister">
+                <p>Disfruta de Netflix en tu smartphone, tableta, Smart TV, ordenador o dispositivo de streaming, todo por una tarifa mensual fija. Planes desde 7,99 € a 17,99 € al mes. Sin cargos adicionales ni contratos.</p>
+            </div>
+            <li>¿Donde puedo ver Netflix?</li>
+            <div class="respuestaRegister">
+                <p>Disfruta donde quieras y cuando quieras. Inicia sesión con tu cuenta de Netflix para disfrutar al instante de todo el contenido de netflix.com desde tu ordenador personal o en cualquier dispositivo conectado a internet que ofrezca la aplicación de Netflix, entre ellos, smart TV, smartphones, tabletas, reproductores multimedia de streaming y consolas de juegos.</p>
+                <p>También puedes descargar tus series favoritas con la aplicación de iOS, Android o Windows 10. Utiliza las descargas para ver títulos dondequiera que vayas y cuando no dispongas de conexión a internet. Netflix siempre te acompaña.</p>
+            </div>
+            <li>¿Cómo cancelo?</li>
+            <div class="respuestaRegister">
+                <p>Netflix es flexible. Sin contratos liosos ni compromisos. Puedes cancelar fácilmente tu cuenta en línea con tan solo dos clics. Sin cargos por cancelación: activa o cancela tu cuenta en cualquier momento.</p>
+            </div>
+            <li>¿Qué puedo ver en Netflix?</li>
+            <div class="respuestaRegister">
+                <p>Netflix dispone de una amplia biblioteca de originales de Netflix galardonados, títulos de anime, series de TV, documentales, largometrajes y otros contenidos. Ve todo el contenido que quieras, cuando quieras.</p>
+            </div>
+            <li>¿Es Netflix bueno para los niños?</li>
+            <div class="respuestaRegister">
+                <p>La experiencia infantil de Netflix se incluye en la suscripción para que los padres tengan el control mientras los niños disfrutan de series y películas familiares en su propio espacio.</p>
+                <p>Los perfiles infantiles incluyen controles parentales protegidos por PIN que te permiten restringir la calificación por edades del contenido que pueden ver los niños y bloquear determinados títulos que no quieras que vean.</p>
+            </div>
+        </ul>
+    </div>
+    <div id="inicioFooter">
+        <div id="inicioFooterCenter">
+            <div>
+                <p>¿Preguntas? Llama al <span>900 822 376</span></p>
+            </div>
+            <ul id="inicioOpciones">
+                <li><a href="">Preguntas frecuentes</a></li>
+                <li><a href="">Centro de ayuda</a></li>
+                <li><a href="">Términos de uso</a></li>
+                <li><a href="">Privacidad</a></li>
+                <li><a href="">Preferencias de cookies</a></li>
+                <li><a href="">Información corporativa</a></li>
+            </ul>
+            <div>
+                <div class="icon-world">
+                    <select class="inicioIdioma">
+                        <option value="spa">Español</option>
+                        <option value="eng">English</option>
+                    </select>
+                </div>
+            </div>
+            <p id="netflixFooter">Netflix España</p>
         </div>
     </div>
 </body>
