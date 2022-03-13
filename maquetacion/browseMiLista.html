@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/d0135093a4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="inicioHeader" class="inicioHeaderHome">
+        <div class="inicioHeaderLeft">
+            <img src="./images/Icono.png" alt="icono netflix" class="iconoN iconoN-small" />
+            <nav class="navbar">
+                <ul>
+                    <li><a href="javascript:void(0)" class="optionActive">Inicio</a></li>
+                    <li><a href="">Series TV</a></li>
+                    <li><a href="">Peliculas</a></li>
+                    <li><a href="">Novedades más vistas</a></li>
+                    <li><a href="milista.html">Mi lista</a></li>
+                </ul>
+            </nav>
+            <nav class="navbarResponsive">
+                <ul>
+                    <li>
+                        <p>Menu <i class="fa-solid fa-caret-down"></i></p>
+                        <ul class="navResponsive">
+                            <li><a href="" class="optionActive">Inicio</a></li>
+                            <li><a href="">Series TV</a></li>
+                            <li><a href="">Peliculas</a></li>
+                            <li><a href="">Novedades más vistas</a></li>
+                            <li><a href="">Mi lista</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="inicioHeaderRight">
+            <div class="searchHeader">
+                <i class="fa-solid fa-magnifying-glass" id="searchInput"></i>
+                <span class="searchHeaderInput searchHeaderHidden">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="buscarHeader" placeholder="Títulos, personas, género..." />
+                </span>
+            </div>
+
+            <script>
+                let search = document.querySelector("#searchInput");
+                let searchCaja = document.querySelector(".searchHeaderInput");
+
+                search.addEventListener("click", () => {
+                    search.classList.toggle("searchHeaderHidden");
+                    searchCaja.classList.toggle("searchHeaderHidden");
+                });
+            </script>
+
+            <i class="fa-solid fa-bell" id="icon-alerta">
+                <span class="badge">12</span>
+            </i>
+            <div class="alertasInfo">
+                <div class="alerta">
+                    <img src="./images/inicio.jpg" alt="icono serie netflix" class="alerta-small" />
+                    <div>
+                        <p>Recordatorio: nueva temporada. Ya puedes ver la 5 temporada</p>
+                        <p class="fechaAlerta">hace 4 días</p>
+                    </div>
+                </div>
+                <div class="lineaNav"></div>
+                <div class="alerta">
+                    <img src="./images/inicio.jpg" alt="icono serie netflix" class="alerta-small" />
+                    <div>
+                        <p>Recordatorio: nueva temporada. Ya puedes ver la 5 temporada</p>
+                        <p class="fechaAlerta">hace 4 días</p>
+                    </div>
+                </div>
+            </div>
+            <span class="menuCuentaHeader">
+                <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
+                <i class="fa-solid fa-angle-down"></i>
+            </span>
+            <div class="menuCuentaHeaderInfo">
+                <div class="cuentaNav">
+                    <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
+                    <p>Adrian</p>
+                </div>
+                <div class="cuentaNav">
+                    <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
+                    <p>Adrian</p>
+                </div>
+                <div class="cuentaNav">
+                    <i class="fa-solid fa-pen icono-small"></i>
+                    <p>Administrar perfiles</p>
+                </div>
+                <div class="lineaNav"></div>
+                <div class="cuentaNav">
+                    <i class="fa-solid fa-user icono-small"></i>
+                    <p>Cuenta</p>
+                </div>
+                <div class="cuentaNav">
+                    <i class="fa-solid fa-circle-question icono-small"></i>
+                    <p>Centro de ayuda</p>
+                </div>
+                <div class="lineaNav"></div>
+                <div class="cuentaNav">
+                    <p>Cerrar sesión en Netflix</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="informacionExtra">
+        <div class="informacionExtraData">
+            <span class="x-cerrar">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+            <h2 class="subtitulo">Mi lista</h2>
+            <div class="iconosPrincipales iconosInfo">
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/familiaAlInstante.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/TLK.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/vikings.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/familiaAlInstante.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/TLK.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/vikings.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/familiaAlInstante.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/TLK.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/vikings.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/familiaAlInstante.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/TLK.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/vikings.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/familiaAlInstante.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/TLK.jpg" alt="familia al instante pelicula">
+                </div>
+                <div class="iconoPeliculas margin-bottom">
+                    <img src="./images/vikings.jpg" alt="familia al instante pelicula">
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="mainInicio">
+        <div class="inicioBanner">
+            <div class="inicioBannerTitle">
+                <img src="./images/community.png" alt="community serie" />
+                <p>Cuando se descubre que su diploma es falso, Jeff Winger vuelve a la universidad y forma un grupo de
+                    marginados. (Un episodio de la 2.ª temporada no está disponible).</p>
+                <div>
+                    <span class="btn btn-light" id="play">
+                        <i class="fa-solid fa-play"></i>
+                        <a href="">Reproducir</a>
+                    </span>
+                    <span class="btn btn-secondary" id="masInfo">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <a href="">Más información</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

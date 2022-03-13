@@ -10,6 +10,13 @@
   }
 }
 
+@media screen and (max-width: 1325px) {
+  .center{
+    width: 80%;
+  }
+
+}
+
 @media screen and (max-width: 1201px) {
   .cardRegister {
     padding: 0 40px;
@@ -31,6 +38,12 @@
     }
 }
 
+@media screen and (max-width: 1160px) {
+  .center{
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 1102px) {
   .navbar{
     display: none;
@@ -38,6 +51,12 @@
 
   .navbarResponsive{
     display: block;
+  }
+}
+
+@media screen and (max-width: 1026px) {
+  .center{
+    width: 80%;
   }
 }
 
@@ -68,6 +87,12 @@
 @media screen and (max-width: 875px) {
   .inicioBannerTitle{
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 869px) {
+  .center{
+    width: 60%;
   }
 }
 
@@ -115,13 +140,13 @@
     margin-bottom: 0;
   }
 
-  #inicioFooter #inicioOpciones {
+  #inicioFooter .inicioOpciones {
     width: 90%;
     margin-bottom: 25px;
     padding-left: 10px;
   }
 
-  #inicioFooter #inicioOpciones li {
+  #inicioFooter .inicioOpciones li {
     width: 198px;
   }
 
@@ -223,6 +248,10 @@
 }
 
 @media screen and (max-width: 544px) {
+  .center{
+    width: 40%;
+  }
+  
   .inicioMainLogin {
     min-height: 500px !important;
   }
@@ -249,10 +278,14 @@
   .respuestaRegister p {
     font-size: 18px;
   }
+
+  .subTitle{
+    font-size: 1.2rem;
+  }
 }
 
 @media screen and (max-width: 512px) {
-  #inicioFooter #inicioOpciones li {
+  #inicioFooter .inicioOpciones li {
     width: 150px;
     margin: 5px;
   }
