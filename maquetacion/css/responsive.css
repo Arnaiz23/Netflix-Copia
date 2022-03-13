@@ -1,6 +1,22 @@
+@media screen and (max-width: 1757px) {
+  .inicioBannerTitle{
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1461px) {
+  .inicioBannerTitle{
+    width: 70%;
+  }
+}
+
 @media screen and (max-width: 1201px) {
   .cardRegister {
     padding: 0 40px;
+  }
+
+  .alertasInfo{
+    max-height: 700px;
   }
 }
 
@@ -13,6 +29,16 @@
     .cuentas{
         flex-wrap: wrap;
     }
+}
+
+@media screen and (max-width: 1102px) {
+  .navbar{
+    display: none;
+  }
+
+  .navbarResponsive{
+    display: block;
+  }
 }
 
 @media screen and (max-width: 950px) {
@@ -36,6 +62,12 @@
 
   #login {
     width: auto;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .inicioBannerTitle{
+    width: 100%;
   }
 }
 
@@ -149,6 +181,16 @@
     width: auto;
     padding: 10px;
   }
+
+  .inicioBannerTitle img{
+    width: 412px;
+  }
+}
+
+@media screen and (max-width: 571px) {
+  .inicioBannerTitle p{
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 553px) {
@@ -164,6 +206,19 @@
   #btn-login {
     padding: 5px 10px;
     font-size: 0.9rem;
+  }
+  
+  .inicioHeaderRight{
+    margin-right: 5px;
+  }
+
+  .badge{
+    right: 6.3rem;
+    top: 2rem;
+  }
+
+  .iconoN-small{
+    width: 120px !important;
   }
 }
 
@@ -232,5 +287,11 @@
 
   .imgRegisterLogin {
     width: 400px;
+  }
+}
+
+@media screen and (max-width: 413px) {
+  .inicioHeaderRight{
+    margin-right: 0;
   }
 }

@@ -62,92 +62,99 @@ body {
   margin-top: -13px;
   cursor: pointer;
 }
+
+.iconoN-small {
+  width: 120px;
+  margin: auto 40px;
+}
+
 /* * ------------------------------------------------------------------ */
 
-.registerLogin, .registerLoginPreguntas{
-    min-height: 475px;
-    background-color: #000;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    /* padding: 0 20%; */
-    margin-top: 10px;
+.registerLogin,
+.registerLoginPreguntas {
+  min-height: 475px;
+  background-color: #000;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* padding: 0 20%; */
+  margin-top: 10px;
 }
 
-.cardRegister{
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.cardRegister {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.registerLoginPreguntas{
-    min-height: 950px;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding-top: 50px;
+.registerLoginPreguntas {
+  min-height: 950px;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 50px;
 }
 
 #registerLoginLast {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-.imgRegisterLogin{
-    width: 504px;
+.imgRegisterLogin {
+  width: 504px;
 }
 
-.subheaderLogin{
-    font-size: 3.125rem;
-    color: #fff;
-    margin-bottom: .5rem;
-    font-weight: bold;
+.subheaderLogin {
+  font-size: 3.125rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
-.subParrafo{
-    font-size: 1.625rem;
-    color: #eee;
-    font-weight: 400;
+.subParrafo {
+  font-size: 1.625rem;
+  color: #eee;
+  font-weight: 400;
 }
 
-.preguntasRegister{
-    height: 500px;
-    width: 75%;
-    margin: 2em auto;
+.preguntasRegister {
+  height: 500px;
+  width: 75%;
+  margin: 2em auto;
 }
 
-.preguntasRegister li{
-    list-style: none;
-    padding: .8em 2.2em .8em 1.2em;
-    background-color: #303030;
-    margin: 10px;
-    font-size: 26px;
-    color: #fff;
-    cursor: pointer;
+.preguntasRegister li {
+  list-style: none;
+  padding: 0.8em 2.2em 0.8em 1.2em;
+  background-color: #303030;
+  margin: 10px;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
 }
 
-.preguntasRegister li::after{
-    content: "\2b";
-    position: absolute;
-    right: 30%;
+.preguntasRegister li::after {
+  content: "\2b";
+  position: absolute;
+  right: 30%;
 }
 
-.respuestaRegister{
-    background-color: #303030;
-    margin: 10px;
-    display: none;
-    transform: translateY(-100%);
+.respuestaRegister {
+  background-color: #303030;
+  margin: 10px;
+  display: none;
+  transform: translateY(-100%);
 }
 
-.respuestaRegisterOn{
-    display: block;
-    transform: translateY(0);
+.respuestaRegisterOn {
+  display: block;
+  transform: translateY(0);
 }
 
-.respuestaRegister p{
-    color: #fff;
-    font-size: 26px;
-    padding: .8em 2.2em .8em 1.2em;
+.respuestaRegister p {
+  color: #fff;
+  font-size: 26px;
+  padding: 0.8em 2.2em 0.8em 1.2em;
 }
 
 /* * -----------------INICIO DE SESION MAIN------------------------- */
@@ -348,30 +355,30 @@ body {
   display: block;
 }
 
-.inputRegister{
-    padding: 20px;
-    width: 74%;
-    font-size: 16px;
-    height: 70px;
+.inputRegister {
+  padding: 20px;
+  width: 74%;
+  font-size: 16px;
+  height: 70px;
 }
 
 .inputRegister:focus {
-    outline: none;
+  outline: none;
 }
 
-#loginRegisterInput{
-    /* padding: 20px; */
-    width: 25%;
-    border-radius: 0;
-    font-size: 30px;
-    height: 70px;
+#loginRegisterInput {
+  /* padding: 20px; */
+  width: 25%;
+  border-radius: 0;
+  font-size: 30px;
+  height: 70px;
 }
 
-.RegisterForm{
-    display: flex;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
+.RegisterForm {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
 }
 
 /* * ------------------------------------------------------------------ */
@@ -393,29 +400,40 @@ body {
   background-color: #e50914;
 }
 
-.btn-transparent{
-    background-color: transparent;
-    border: 1px solid #808080;
-    color: #808080;
-    font-size: 1.597rem;
-    transition: color .2s, border-color .2s;
+.btn-transparent {
+  background-color: transparent;
+  border: 1px solid #808080;
+  color: #808080;
+  font-size: 1.597rem;
+  transition: color 0.2s, border-color 0.2s;
 }
 
-.btn-transparent:hover{
-    color: #fff;
-    border-color: #fff;
+.btn-transparent:hover {
+  color: #fff;
+  border-color: #fff;
 }
 
-.btn-light{
-    background-color: #fff;
-    color: #000;
-    font-size: 1.597rem;
-    transition: color .2s, background-color .2s;
+.btn-light {
+  background-color: #fff;
+  color: #000;
+  font-size: 1.597rem;
+  transition: color 0.2s, background-color 0.2s;
 }
 
-.btn-light:hover{
-    background-color: rgb(253, 44, 44);
-    color: #fff;
+.btn-light:hover {
+  background-color: rgb(253, 44, 44);
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: rgba(80, 80, 80, 0.842);
+  color: #fff;
+  font-size: 1.597rem;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(80, 80, 80, 0.568);
 }
 
 /* * ------------------------------------------------------------------ */
@@ -493,97 +511,408 @@ body {
   color: #888;
 }
 
-#netflixFooter{
-    font-size: 13px;
+#netflixFooter {
+  font-size: 13px;
 }
 /* * ------------------------------------------------------------------ */
 
 /* * ------------------------------CUENTAS------------------------- */
 
-.mainCuenta{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 6rem;
+.mainCuenta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 6rem;
 }
 
-.mainCuenta h2{
-    color: #fff;
-    font-size: 4.653rem;
-    margin-bottom: 3rem;
+.mainCuenta h2 {
+  color: #fff;
+  font-size: 4.653rem;
+  margin-bottom: 3rem;
 }
 
-.cuentas{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.cuentas {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.cuenta{
-    width: 192px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin: 0 20px;
+.cuenta {
+  width: 192px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 20px;
 }
 
-#addPerfil{
-    font-size: 192px;
-    color: #808080;
+#addPerfil {
+  font-size: 192px;
+  color: #808080;
 }
 
-.cuenta:hover #addPerfil{
-    background-color: #fff;
-    border-radius: 10px;
+.cuenta:hover #addPerfil {
+  background-color: #fff;
+  border-radius: 10px;
 }
 
-.cuenta:hover .cuentaNombre{
-    color: #fff;
+.cuenta:hover .cuentaNombre {
+  color: #fff;
 }
 
-.cuenta img{
-    width: 192px;
-    border-radius: 10px;
-    transition: outline .3s;
+.cuenta img {
+  width: 192px;
+  border-radius: 10px;
+  transition: outline 0.3s;
 }
 
-.cuenta:hover img{
-    outline: 7px solid #fff;
+.cuenta:hover img {
+  outline: 7px solid #fff;
 }
 
-.cuentaNombre{
-    color: #808080;
-    font-size: 24px;
-    margin-top: 20px;
+.cuentaNombre {
+  color: #808080;
+  font-size: 24px;
+  margin-top: 20px;
 }
 
-#administrarCuentas{
-    margin-top: 70px;
-    border-radius: 0;
-    min-width: 130px;
-    text-align: center;
+#administrarCuentas {
+  margin-top: 70px;
+  border-radius: 0;
+  min-width: 130px;
+  text-align: center;
 }
 
-.cuentaAdmin{
-    background-color: rgba(0,0,0,.7);
-    border-radius: 10px;
-    z-index: 10;
-    height: 191px;
-    width: 192px;
-    position: absolute;
-    margin-top: -54px;
-    margin-left: -1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cuentaAdmin {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  z-index: 10;
+  height: 191px;
+  width: 192px;
+  position: absolute;
+  margin-top: -54px;
+  margin-left: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.cuentaAdmin i{
-    color: #fff;
-    font-size: 45px;
+.cuentaAdmin i {
+  color: #fff;
+  font-size: 45px;
+}
+
+/* * ------------------------------------------------------------------ */
+
+/* * ------------------------------INICIO------------------------- */
+
+.inicioHeaderLeft {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.navbarResponsive {
+  display: none;
+}
+
+.navbarResponsive li {
+  color: #fff;
+  cursor: pointer;
+  list-style: none;
+}
+
+.navbarResponsive > ul > li > p:hover ~ .navResponsive {
+  opacity: 1;
+}
+
+.navResponsive {
+  transition: opacity 1s;
+  opacity: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-top: 2px solid #fff;
+  width: 300px;
+  height: 250px;
+  top: 5rem;
+  left: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.navResponsive li:hover {
+  background-color: rgba(51, 51, 51, 0.774);
+}
+
+.navResponsive li {
+  list-style: none;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.navResponsive li a {
+  color: #fff;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar ul li {
+  list-style: none;
+  margin: 5px;
+}
+
+.navbar ul li a {
+  color: #fff;
+}
+
+.navbar ul li a:hover {
+  color: #aaa;
+}
+
+.optionActive {
+  font-weight: bold;
+  cursor: default;
+}
+
+.optionActive:hover {
+  color: #fff !important;
+}
+
+.inicioHeaderRight {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+  margin-right: 2rem;
+}
+
+.inicioHeaderRight i {
+  color: #fff;
+  font-size: 20px;
+}
+
+.badge {
+  background-color: #f44;
+  border-radius: 50%;
+  font-size: 11px;
+  width: 20px;
+  /* padding: 3px; */
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 13px;
+  right: 11.7em;
+}
+
+.menuCuentaHeader {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.menuCuentaHeader i {
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+.searchHeaderHidden {
+  display: none !important;
+}
+
+.searchHeader {
+  display: flex;
+  align-items: center;
+}
+
+.searchHeaderInput {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 12rem;
+  background-color: #000;
+  border: 1px solid #808080;
+  padding: 5px 8px;
+}
+
+#buscarHeader {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  padding-left: 10px;
+}
+
+#buscarHeader:focus {
+  outline: none;
+}
+
+.icono-small {
+  width: 30px;
+  border-radius: 5px;
+}
+
+.menuCuentaHeader,
+.inicioHeaderRight i {
+  cursor: pointer;
+}
+
+.menuCuentaHeader:hover ~ .menuCuentaHeaderInfo {
+  visibility: visible;
+}
+
+.menuCuentaHeaderInfo,
+.alertasInfo {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 4.5rem;
+  visibility: hidden;
+}
+
+.cuentaNav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.7rem 0;
+  padding: 2px 1rem;
+  transition: visibility 0.2s;
+}
+
+.cuentaNav p {
+  color: #fff;
+  font-size: 0.8rem;
+  margin-left: 0.7rem;
+}
+
+.lineaNav {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #808080;
+}
+
+#icon-alerta:hover ~ .alertasInfo {
+  visibility: visible;
+}
+
+.alertasInfo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  right: 7rem;
+  border-top: 2px solid #fff;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.alerta {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.alerta p {
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 15px;
+}
+
+.fechaAlerta {
+  opacity: 0.4;
+  font-size: 0.8rem !important;
+  margin-top: 5px;
+}
+
+.alerta-small {
+  width: 170px;
+  border-radius: 10px;
+}
+
+.inicioHeaderHome {
+  position: absolute;
+  width: 100%;
+}
+
+.mainInicio {
+}
+
+.inicioBanner {
+  background-image: url("../images/inicio.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#masInfo a {
+  color: #fff;
+}
+
+#play a {
+  color: #000;
+}
+
+.btn-light:hover a {
+  color: #fff !important;
+}
+
+.inicioBannerTitle {
+  width: 40%;
+  /* background-color: rgba(0, 0, 0, 0.336); */
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.7329132336528361) 0%,
+    rgba(0, 0, 0, 0.4500000683867297) 28%,
+    rgba(69, 69, 69, 0.43599446614583337) 44%,
+    rgba(255, 255, 255, 0.02703088071165971) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 3rem;
+  border-radius: 5px;
+}
+
+.inicioBannerTitle img {
+  margin-top: -6rem;
+}
+
+.inicioBannerTitle p {
+  color: #fff;
+  font-size: 1.875rem;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.inicioBannerTitle div {
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.inicioBannerTitle div span {
+  margin-right: 1.5rem;
+  margin-top: 1rem;
 }
 
 /* * ------------------------------------------------------------------ */
