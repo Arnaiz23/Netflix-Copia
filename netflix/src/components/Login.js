@@ -19,6 +19,27 @@ class Login extends Component {
         redirect: null
     }
 
+    componentDidMount() {
+        this.getCuenta();
+    }
+
+    getCuenta = () => {
+        let token = {
+            token: localStorage.getItem("token")
+        };
+
+        axios.post(this.url + "cuenta", token)
+            .then(res => {
+                // console.log(res.data);
+                this.setState({
+                    redirect : true
+                });
+            })
+            .catch(err => {
+                // console.log(err);
+            });
+    }
+
     rellenar = (e) => {
         this.setState({
             cuenta: {
