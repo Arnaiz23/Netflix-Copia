@@ -1,11 +1,50 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from 'axios';
 
 import Footer from "./Footer";
 import Header from "./Header";
 
+import { config } from '../config';
+
 class Login extends Component {
+
+    url = config.url;
+
+    emailRef = React.createRef();
+    passwordRef = React.createRef();
+
+    state = {
+        cuenta: {},
+        redirect: null
+    }
+
+    rellenar = (e) => {
+        this.setState({
+            cuenta: {
+                email: this.emailRef.current.value,
+                password: this.passwordRef.current.value
+            }
+        });
+    }
+
+    comprobar = (e) => {
+        e.preventDefault();
+        this.rellenar();
+        
+        axios.post(this.url+'comprobar-cuenta',this.state.cuenta)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    }
+
     render() {
+
+        if(this.state.redirect) return <Navigate to={'/inicio'} />
+
         return (
             <div id="inicioLogin">
                 <div id="inicioLoginOscuro">
@@ -14,28 +53,31 @@ class Login extends Component {
                     <div id="inicioMain">
                         <div id="login">
                             <h2>Iniciar sesión</h2>
-                            <input type="text" placeholder="Correo electrónico o número de teléfono" id="loginCorreo" />
-                            {/* <p className="incorrectLoginWarning">Escribe un número de teléfono o un correo válidos.</p> */}
-                            <div id="loginPassword">
-                                <input type="password" placeholder="Contraseña" />
-                                <p id="passwordMostrar">MOSTRAR</p>
-                                <p id="passwordOcultar">OCULTAR</p>
-                            </div>
-                            {/* <p className="incorrectLoginWarning">La contraseña debe tener entre 4 y 60 caracteres.</p> */}
-                            <input type="submit" value="Iniciar sesión" className="btn btn-danger" id="loginEnviar" />
-
-                                <div id="loginOpciones">
-                                    <div id="loginRecuerdame">
-                                        <input type="checkbox" id="recuerdame" />
-                                        <label htmlFor="recuerdame">Recuérdame</label>
-                                    </div>
-                                    <a href="">¿Necesitas ayuda?</a>
+                            <form onSubmit={this.comprobar}>
+                                <input type="text" placeholder="Correo electrónico o número de teléfono" id="loginCorreo" ref={this.emailRef} onChange={this.rellenar} />
+                                {/* <p className="incorrectLoginWarning">Escribe un número de teléfono o un correo válidos.</p> */}
+                                <div id="loginPassword">
+                                    <input type="password" placeholder="Contraseña" ref={this.passwordRef} onChange={this.rellenar} />
+                                    <p id="passwordMostrar">MOSTRAR</p>
+                                    <p id="passwordOcultar">OCULTAR</p>
                                 </div>
-                                <a href="" id="loginFacebook"> Iniciar sesión con Facebook</a>
-                                <p id="loginRegisterInfo">¿Todavía sin Netflix? <Link to={'/register'}>Suscríbete ya</Link>.</p>
-                                <p id="loginCatpcha">Esta página utiliza Google reCAPTCHA para garantizar que no eres un robot. <a
-                                    href="">Más
-                                    información</a></p>
+                                {/* <p className="incorrectLoginWarning">La contraseña debe tener entre 4 y 60 caracteres.</p> */}
+                                <input type="submit" value="Iniciar sesión" className="btn btn-danger" id="loginEnviar" />
+                            </form>
+
+
+                            <div id="loginOpciones">
+                                <div id="loginRecuerdame">
+                                    <input type="checkbox" id="recuerdame" />
+                                    <label htmlFor="recuerdame">Recuérdame</label>
+                                </div>
+                                <a href="">¿Necesitas ayuda?</a>
+                            </div>
+                            <a href="" id="loginFacebook"> Iniciar sesión con Facebook</a>
+                            <p id="loginRegisterInfo">¿Todavía sin Netflix? <Link to={'/register'}>Suscríbete ya</Link>.</p>
+                            <p id="loginCatpcha">Esta página utiliza Google reCAPTCHA para garantizar que no eres un robot. <a
+                                href="">Más
+                                información</a></p>
                         </div>
                     </div>
 
