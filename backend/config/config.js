@@ -8,5 +8,6 @@ module.exports = {
     DB_PORT: process.env.db_port || 2717,
     DB_DATABASE: process.env.db_database || 'api',
     DB_USERNAME: process.env.db_username || 'root',
-    DB_PASSWORD: process.env.db_password || 'root'
+    DB_PASSWORD: process.env.db_password || 'root',
+    llave: "estoesnetflixbb"
 }

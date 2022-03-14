@@ -9,6 +9,8 @@ var jwt = require('jsonwebtoken');
 var fs = require("fs");
 var path = require("path");
 
+const config = require('../config/config');
+
 var controller = {
     prueba: (req, res) => {
         res.send("Hello World");
@@ -305,28 +307,37 @@ var controller = {
         });
     },
     getCuenta: (req, res) => {
-        const cuentaId = req.params.id;
+        const body = req.body;
 
-        Cuenta.findById(cuentaId, (err, cuenta) => {
-            if(err){
-                res.status(500).send({
+        jwt.verify(body.token, config.llave, (err, user) => {
+            if (err) {
+                return res.status(404).send({
                     status: "error",
-                    message: "Hay un error!!!"
+                    message: "Hay un error en los datos"
                 });
             }
 
-            if(!cuenta){
-                res.status(404).send({
-                    status: "error",
-                    message: "No existe ese usuario"
-                })
-            }
+            Usuario.find({ usuario: user.usuario}, (err, usuario) => {
+                if (err) {
+                    return res.status(500).send({
+                        status: "error",
+                        message: "Error al comprobar"
+                    });
+                }
 
-            res.status(200).send({
-                status: "success",
-                message: cuenta
-            })
-        });
+                if (!usuario || usuario.length == 0) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "No existe ese usuario"
+                    });
+                }
+
+                return res.status(200).send({
+                    status: "success",
+                    usuario
+                });
+            });
+        })
     },
     newCuenta: async (req, res) => {
         const body = req.body;
@@ -412,6 +423,48 @@ var controller = {
                 status: "success",
                 message: cuenta
             });
+        });
+    },
+    comprobarCuenta: (req, res) => {
+        const body = req.body;
+
+        Cuenta.findOne({email: body.email}, async (err, cuenta) => {
+            if (err) {
+                return res.status(500).send({
+                    status: "error",
+                    message: "Error al recoger los datos"
+                });
+            }
+
+            if (!cuenta || cuenta.length == 0) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "Esa cuenta no existe"
+                });
+            }
+
+            if(cuenta) {
+                const verificado = await Cuenta.comparePassword(body.password, cuenta.password);
+
+                if(verificado){
+                    const payload = {
+                        password: body.password,
+                        id: body._id,
+                        email: body.email
+                    }
+                    const token = jwt.sign(payload, config.llave, { expiresIn: 1440 });
+        
+                    return res.status(200).send({
+                        status: "success",
+                        token
+                    });
+                }else{
+                    return res.status(404).send({
+                        status: "error",
+                        message: "Las contraseñas no coinciden!!!"
+                    });
+                }
+            }
         });
     },
     // * USUARIOS

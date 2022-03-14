@@ -24,10 +24,11 @@ router.post('/upload-image/:id?', md_upload, controllers.upload); //Subir una im
 
 // * Rutas cuentas
 router.get("/cuentas" , controllers.getCuentas); //Obtener todos las cuentas
-router.get("/cuenta/:id" , controllers.getCuenta); //Obtener una cuenta
+router.post("/cuenta" , controllers.getCuenta); //Obtener una cuenta
 router.post("/cuentas" , controllers.newCuenta); //Nuevo cuenta
 router.put("/cuentas/:id" , controllers.updateCuenta); //Modificar cuenta
 router.delete("/cuentas/:id" , controllers.deleteCuenta); //Eliminar cuenta
+router.post("/comprobar-cuenta" , controllers.comprobarCuenta); //Comprobar cuenta
 
 // * Rutas usuarios
 router.post("/usuario" , controllers.newUsuario); //Crear un usuario
