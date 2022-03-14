@@ -17,7 +17,7 @@ class RowPeliculas extends Component {
                 <div className="iconosPrincipales">
                     <div className="iconoPeliculas">
                         <img src={imagen} alt="familia al instante pelicula" />
-                        {this.props.progress && <progress class="progress" max="100" value="50"></progress>}
+                        {this.props.progress && <progress className="progress" max="100" value="50"></progress>}
                     </div>
                     {/* <div className="peliculaHover">
                         <img src="./images/familiaAlInstante.jpg" alt="familia al instante" />
@@ -47,11 +47,11 @@ class RowPeliculas extends Component {
                     </div> */}
                     <div className="iconoPeliculas">
                         <img src={imagen} alt="familia al instante pelicula" />
-                        {this.props.progress && <progress class="progress" max="100" value="50"></progress>}
+                        {this.props.progress && <progress className="progress" max="100" value="50"></progress>}
                     </div>
                     <div className="iconoPeliculas">
                         <img src={imagen} alt="familia al instante pelicula" />
-                        {this.props.progress && <progress class="progress" max="100" value="50"></progress>}
+                        {this.props.progress && <progress className="progress" max="100" value="50"></progress>}
                     </div>
                 </div>
             </div>

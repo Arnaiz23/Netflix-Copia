@@ -34,7 +34,11 @@ class Login extends Component {
         
         axios.post(this.url+'comprobar-cuenta',this.state.cuenta)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
+                localStorage.setItem("token", res.data.token);
+                this.setState({
+                    redirect: true
+                });
             })
             .catch(err => {
                 console.error(err);
@@ -43,7 +47,7 @@ class Login extends Component {
 
     render() {
 
-        if(this.state.redirect) return <Navigate to={'/inicio'} />
+        if(this.state.redirect) return <Navigate to={'/cuentas'} />
 
         return (
             <div id="inicioLogin">
