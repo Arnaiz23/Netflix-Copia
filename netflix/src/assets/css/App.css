@@ -1,0 +1,1592 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+body {
+  background-color: #222222;
+}
+
+#inicioLogin {
+  background-image: url("../images/inicioLogin.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* height: 100vh;
+    width: 100vw; */
+}
+
+#inicioLoginOscuro {
+  /* display: grid;
+  grid-template-areas:
+    "header header header"
+    "login login login"
+    "footer footer footer";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 88px 775px 260px; */
+  display: flex;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  flex-direction: column;
+  width: 100%;
+  /* height: 100vh; */
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+/* * -----------------INICIO DE SESION HEADER------------------------- */
+#inicioHeader {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.814145726650035) 25%,
+    rgba(255, 255, 255, 0.02703088071165971) 100%
+  );
+}
+
+.headerDerecha {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-right: 50px;
+}
+
+.headerDerecha a {
+  margin-left: 30px;
+}
+
+.iconoN {
+  width: 200px;
+  margin-top: -13px;
+  cursor: pointer;
+}
+
+.iconoN-small {
+  width: 120px;
+  margin: auto 40px;
+}
+
+/* * ------------------------------------------------------------------ */
+
+.registerLogin,
+.registerLoginPreguntas {
+  min-height: 475px;
+  background-color: #000;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* padding: 0 20%; */
+  margin-top: 10px;
+}
+
+.cardRegister {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.registerLoginPreguntas {
+  min-height: 950px;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 50px;
+}
+
+#registerLoginLast {
+  margin-bottom: 10px;
+}
+
+.imgRegisterLogin {
+  width: 504px;
+}
+
+.subheaderLogin {
+  font-size: 3.125rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.subParrafo {
+  font-size: 1.625rem;
+  color: #eee;
+  font-weight: 400;
+}
+
+.preguntasRegister {
+  height: 500px;
+  width: 75%;
+  margin: 2em auto;
+}
+
+.preguntasRegister li {
+  list-style: none;
+  padding: 0.8em 2.2em 0.8em 1.2em;
+  background-color: #303030;
+  margin: 10px;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.preguntasRegister li::after {
+  content: "\2b";
+  position: absolute;
+  right: 30%;
+}
+
+.respuestaRegister {
+  background-color: #303030;
+  margin: 10px;
+  display: none;
+  transform: translateY(-100%);
+}
+
+.respuestaRegisterOn {
+  display: block;
+  transform: translateY(0);
+}
+
+.respuestaRegister p {
+  color: #fff;
+  font-size: 26px;
+  padding: 0.8em 2.2em 0.8em 1.2em;
+}
+
+/* * -----------------INICIO DE SESION MAIN------------------------- */
+#inicioMain {
+  grid-area: login;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    360deg,
+    rgba(0, 0, 0, 0.7329132336528361) 0%,
+    rgba(0, 0, 0, 0.5424370431766457) 18%,
+    rgba(255, 255, 255, 0.02703088071165971) 100%
+  );
+  min-height: 780px;
+}
+
+#login {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 50%;
+  min-height: 660px;
+  padding: 50px;
+  /* margin-top: -100px; */
+  margin-bottom: 120px;
+  max-width: 450px;
+}
+
+#login h2 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+#login input {
+  width: 95%;
+}
+
+#login input[type="text"],
+#login input[type="password"] {
+  padding: 14px;
+  margin: 8px;
+  background-color: #333;
+  border: none;
+  color: #ddd;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#login input[type="text"]:focus,
+#login input[type="password"]:focus {
+  outline: none;
+  background-color: #454545;
+}
+
+#loginPassword {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#login input[type="password"]:focus ~ #passwordMostrar {
+  display: block;
+}
+
+#loginPassword p {
+  display: none;
+  position: absolute;
+  color: #fff;
+  right: 35%;
+  color: #888;
+  cursor: pointer;
+}
+
+.incorrectLoginInput {
+  border-bottom: 2px solid #e87c03 !important;
+}
+
+.incorrectLoginWarning {
+  color: #e87c03;
+  font-size: 12px;
+  padding-left: 14px;
+}
+
+#login #loginCorreo {
+  margin-top: 35px;
+}
+
+#login #loginEnviar {
+  margin-left: 8px;
+  margin-top: 30px;
+}
+
+#loginOpciones {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px auto;
+  margin-left: 8px;
+}
+
+#loginOpciones li {
+  list-style: none;
+}
+
+#loginOpciones #loginRecuerdame {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#loginOpciones #loginRecuerdame label {
+  color: #888;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+#loginOpciones #loginRecuerdame #recuerdame {
+  accent-color: #737373;
+}
+
+#loginOpciones a {
+  color: #aaa;
+  font-size: 13px;
+}
+
+#loginFacebook {
+  color: #888;
+  font-size: 13px;
+  margin: 20px 0 10px;
+  margin-left: 8px;
+  display: block;
+}
+
+#loginFacebook::before {
+  content: "\f082";
+  color: #3b5998;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+#loginRegisterInfo {
+  color: #888;
+  margin-left: 8px;
+}
+
+#loginRegisterInfo a {
+  color: #eee;
+  font-weight: 500;
+}
+
+#loginRegisterInfo a:hover {
+  text-decoration: underline;
+}
+
+#loginCatpcha {
+  color: #888;
+  font-size: 13px;
+  margin-top: 10px;
+  width: 90%;
+  margin-left: 8px;
+}
+
+#loginCatpcha a {
+  color: #0071eb;
+}
+
+#loginCatpcha a:hover {
+  text-decoration: underline;
+}
+
+.centerLogin {
+  width: 816px;
+}
+
+.centerLogin h2 {
+  color: #fff;
+  font-size: 4rem;
+  text-align: center;
+  width: 665px;
+  margin: 20px auto;
+}
+
+.loginSubtitle {
+  font-size: 1.625rem;
+  color: #eee;
+  margin: 20px auto;
+  display: block;
+  width: max-content;
+}
+
+.loginSubSubtitle {
+  font-size: 1.2rem;
+  color: #eee;
+  margin: 20px auto;
+  display: block;
+}
+
+.inputRegister {
+  padding: 20px;
+  width: 74%;
+  font-size: 16px;
+  height: 70px;
+}
+
+.inputRegister:focus {
+  outline: none;
+}
+
+#loginRegisterInput {
+  /* padding: 20px; */
+  width: 25%;
+  border-radius: 0;
+  font-size: 30px;
+  height: 70px;
+}
+
+.RegisterForm {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* * ------------------------------------------------------------------ */
+
+/* * ----------------------------BOTONES------------------------- */
+
+.btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 13px;
+}
+
+.btn-danger {
+  background-color: #e50914;
+}
+
+.btn-transparent {
+  background-color: transparent;
+  border: 1px solid #808080;
+  color: #808080;
+  font-size: 1.597rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-transparent:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-light {
+  background-color: #fff;
+  color: #000;
+  font-size: 1.597rem;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.btn-light:hover {
+  background-color: rgb(253, 44, 44);
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: rgba(80, 80, 80, 0.842);
+  color: #fff;
+  font-size: 1.597rem;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(80, 80, 80, 0.568);
+}
+
+/* * ------------------------------------------------------------------ */
+
+/* * -----------------INICIO DE SESION FOOTER------------------------- */
+#inicioFooter {
+  grid-area: footer;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 25px 30px;
+}
+
+#inicioFooter a,
+#inicioFooter p {
+  color: #777;
+}
+
+#inicioFooter div {
+  margin-bottom: 25px;
+}
+
+#inicioFooter span {
+  cursor: pointer;
+}
+
+.inicioOpciones {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* width: 97%; */
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.inicioOpciones li {
+  width: 222px;
+  margin: 5px;
+  list-style: none;
+}
+
+.inicioOpciones a {
+  font-size: 13px;
+  margin-right: 86px;
+  margin-bottom: 15px;
+  color: #808080;
+}
+
+.inicioOpciones a:hover,
+#inicioFooter span:hover {
+  text-decoration: underline;
+}
+
+.inicioOpciones a:last-child {
+  margin-left: -15px;
+}
+
+.inicioIdioma {
+  color: #888;
+  background: transparent;
+  border: none;
+}
+
+.icon-world {
+  background-color: #000;
+  border: 1px solid #444;
+  padding: 10px;
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-world::before {
+  content: "\f0ac";
+  color: #888;
+}
+
+#netflixFooter {
+  font-size: 13px;
+}
+/* * ------------------------------------------------------------------ */
+
+/* * ------------------------------CUENTAS------------------------- */
+
+.mainCuenta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 6rem;
+}
+
+.mainCuenta h2 {
+  color: #fff;
+  font-size: 4.653rem;
+  margin-bottom: 3rem;
+}
+
+.cuentas {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.cuenta {
+  width: 192px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+#addPerfil {
+  font-size: 192px;
+  color: #808080;
+}
+
+.cuenta:hover #addPerfil {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.cuenta:hover .cuentaNombre {
+  color: #fff;
+}
+
+.cuenta img {
+  width: 192px;
+  border-radius: 10px;
+  transition: outline 0.3s;
+}
+
+.cuenta:hover img {
+  outline: 7px solid #fff;
+}
+
+.cuentaNombre {
+  color: #808080;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+#administrarCuentas {
+  margin-top: 70px;
+  border-radius: 0;
+  min-width: 130px;
+  text-align: center;
+}
+
+.cuentaAdmin {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  z-index: 10;
+  height: 191px;
+  width: 192px;
+  position: absolute;
+  margin-top: -54px;
+  margin-left: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cuentaAdmin i {
+  color: #fff;
+  font-size: 45px;
+}
+
+/* * ------------------------------------------------------------------ */
+
+/* * ------------------------------INICIO------------------------- */
+
+.inicioHeaderLeft {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.navbarResponsive {
+  display: none;
+}
+
+.navbarResponsive li {
+  color: #fff;
+  cursor: pointer;
+  list-style: none;
+}
+
+.navbarResponsive > ul > li > p:hover ~ .navResponsive {
+  opacity: 1;
+}
+
+.navResponsive {
+  transition: opacity 1s;
+  opacity: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-top: 2px solid #fff;
+  width: 300px;
+  height: 250px;
+  top: 5rem;
+  left: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.navResponsive li:hover {
+  background-color: rgba(51, 51, 51, 0.774);
+}
+
+.navResponsive li {
+  list-style: none;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.navResponsive li a {
+  color: #fff;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar ul li {
+  list-style: none;
+  margin: 5px;
+}
+
+.navbar ul li a {
+  color: #fff;
+}
+
+.navbar ul li a:hover {
+  color: #aaa;
+}
+
+.optionActive {
+  font-weight: bold;
+  cursor: default;
+}
+
+.optionActive:hover {
+  color: #fff !important;
+}
+
+.inicioHeaderRight {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+  margin-right: 2rem;
+}
+
+.inicioHeaderRight i {
+  color: #fff;
+  font-size: 20px;
+}
+
+.badge {
+  background-color: #f44;
+  border-radius: 50%;
+  font-size: 11px;
+  width: 20px;
+  /* padding: 3px; */
+  height: 20px;
+  display: inline-block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 13px;
+  right: 11.7em;
+}
+
+.menuCuentaHeader {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.menuCuentaHeader i {
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+.searchHeaderHidden {
+  display: none !important;
+}
+
+.searchHeader {
+  display: flex;
+  align-items: center;
+}
+
+.searchHeaderInput {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 12rem;
+  background-color: #000;
+  border: 1px solid #808080;
+  padding: 5px 8px;
+}
+
+#buscarHeader {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  padding-left: 10px;
+}
+
+#buscarHeader:focus {
+  outline: none;
+}
+
+.icono-small {
+  width: 30px;
+  border-radius: 5px;
+}
+
+.menuCuentaHeader,
+.inicioHeaderRight i {
+  cursor: pointer;
+}
+
+.menuCuentaHeader:hover ~ .menuCuentaHeaderInfo {
+  visibility: visible;
+}
+
+.menuCuentaHeaderInfo,
+.alertasInfo {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 4.5rem;
+  visibility: hidden;
+}
+
+.cuentaNav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.7rem 0;
+  padding: 2px 1rem;
+  transition: visibility 0.2s;
+}
+
+.cuentaNav p {
+  color: #fff;
+  font-size: 0.8rem;
+  margin-left: 0.7rem;
+}
+
+.lineaNav {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #808080;
+}
+
+#icon-alerta:hover ~ .alertasInfo {
+  visibility: visible;
+}
+
+.alertasInfo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  right: 7rem;
+  border-top: 2px solid #fff;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.alerta {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.alerta p {
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 15px;
+}
+
+.fechaAlerta {
+  opacity: 0.4;
+  font-size: 0.8rem !important;
+  margin-top: 5px;
+}
+
+.alerta-small {
+  width: 170px;
+  border-radius: 10px;
+}
+
+.inicioHeaderHome {
+  position: absolute;
+  width: 100%;
+}
+
+.inicioBanner {
+  background-image: url("../images/inicio.jpg");
+  height: 100vh;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#masInfo a {
+  color: #fff;
+}
+
+#play a {
+  color: #000;
+}
+
+.btn-light:hover a {
+  color: #fff !important;
+}
+
+.inicioBannerTitle {
+  width: 40%;
+  /* background-color: rgba(0, 0, 0, 0.336); */
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.7329132336528361) 0%,
+    rgba(0, 0, 0, 0.4500000683867297) 28%,
+    rgba(69, 69, 69, 0.43599446614583337) 44%,
+    rgba(255, 255, 255, 0.02703088071165971) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 3rem;
+  border-radius: 5px;
+}
+
+.inicioBannerTitle img {
+  margin-top: -6rem;
+}
+
+.inicioBannerTitle p {
+  color: #fff;
+  font-size: 1.875rem;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.inicioBannerTitle div {
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.inicioBannerTitle div span {
+  margin-right: 1.5rem;
+  margin-top: 1rem;
+}
+
+.centralNetflix,
+.footer {
+  background-color: #141414;
+}
+
+.iconosPrincipales {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.iconoPeliculas {
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.iconoPeliculas img {
+  border-radius: 5px;
+}
+
+.subTitle {
+  color: #fff;
+  font-size: 1.875rem;
+  margin: 1.2rem 1rem;
+  cursor: pointer;
+}
+
+.row {
+  padding: 1.2rem 3rem;
+}
+
+.progress {
+  accent-color: red;
+  margin-top: 5px;
+}
+
+.footer {
+  padding-top: 4rem;
+  padding-bottom: 0.5rem;
+}
+
+.center {
+  width: 70%;
+  margin: auto;
+}
+
+.redes {
+  width: 15%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.redSocial {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.codigoServicio {
+  color: #808080;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: 1px solid #808080;
+  cursor: pointer;
+}
+
+.codigoServicio:hover {
+  color: #fff;
+}
+
+.copyright {
+  color: #808080;
+  font-size: 12px;
+  margin-top: 1.4rem;
+}
+
+.row:hover .ver-mas {
+  visibility: visible;
+}
+
+.ver-mas {
+  font-size: 1.5rem;
+  color: #54b9c5;
+  visibility: hidden;
+}
+
+.explorar {
+  color: #54b9c5;
+  font-size: 1.2rem;
+  /* margin-left: 1rem; */
+  /* display: none; */
+  visibility: hidden;
+}
+
+.subTitle:hover .explorar {
+  visibility: visible;
+  /* margin-left: 1rem; */
+  transform: translateX(1vw);
+}
+
+.subTitle:hover .ver-mas {
+  display: none;
+}
+
+.mainMiLista {
+  padding-top: 4.3rem;
+}
+
+.iconosMiLista {
+  overflow-x: initial;
+  flex-wrap: wrap;
+}
+
+.margin-bottom {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom img {
+  width: 90%;
+}
+
+.informacionExtra {
+  position: absolute;
+  background-color: #000000e1;
+  min-width: calc(100vw - 12px);
+  min-height: 100vh;
+}
+
+.informacionExtraData {
+  background-color: #181818;
+  width: calc(100vw - 300px);
+  /* min-height: 100vh; */
+  padding-bottom: 2rem;
+  margin: 2rem auto;
+  border-radius: 10px;
+}
+
+.x-cerrar {
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 11rem;
+  top: 3rem;
+  cursor: pointer;
+}
+
+.subtitulo {
+  color: #fff;
+  font-size: 4rem;
+  text-align: center;
+  padding-top: 6rem;
+  margin-bottom: 6rem;
+}
+
+.iconosInfo {
+  flex-wrap: wrap;
+  overflow-x: initial;
+  padding: 0 2rem;
+}
+
+.peliculaHover {
+  width: 413px;
+  /* display: flex; */
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 13px;
+  background: #000000;
+  box-shadow: 12px 12px 24px #000000, -12px -12px 24px #141414;
+  /* z-index: 3; */
+
+  position: absolute;
+  /* display: none; */
+}
+
+.iconoPeliculas:hover ~ .peliculaHover{
+  display: flex;
+}
+
+.peliculaHover img {
+  width: 100%;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+.peliculaHoverInfo {
+  background-color: #141414;
+  width: 100%;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+
+.peliculaHoverRow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.peliculaHoverRow i{
+  color: #fff;
+  border-radius: 50%;
+  border: 2px solid #808080;
+  background-color: #464646;
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.peliculaHoverRow i:hover{
+  border-color: #fff;
+}
+
+.optionsHover{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.optionsHover i{
+  margin-right: .5rem;
+}
+
+.optionsHover i:first-child{
+  border-color: #fff;
+  background-color: #fff;
+  color: #000;
+}
+
+.coincidencia{
+  color: rgb(8, 187, 8);
+  font-weight: bold;
+}
+
+.temporardas{
+  color: #fff;
+}
+
+.edad-7, .edad-16, .edad-12, .edad-18{
+  width: 35px;
+  height: 25px;
+  font-weight: bold;
+  background-color: #0071eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.edad-16{
+  background-color: rgb(218, 99, 20);
+  color: #fff;
+}
+
+.edad-12{
+  background-color: rgb(223, 219, 16);
+}
+
+.edad-18{
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.hd{
+  width: 35px;
+  border-radius: 5px;
+  height: 25px;
+  border: 1px solid #808080;
+  color: #808080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genero{
+  color: #fff;
+}
+
+/* * ------------------------------------------------------------------ */
+
+@media screen and (max-width: 1757px) {
+  .inicioBannerTitle{
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 1461px) {
+  .inicioBannerTitle{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1325px) {
+  .center{
+    width: 80%;
+  }
+
+}
+
+@media screen and (max-width: 1201px) {
+  .cardRegister {
+    padding: 0 40px;
+  }
+
+  .alertasInfo{
+    max-height: 700px;
+  }
+}
+
+@media screen and (max-width: 1142px) {
+    .mainCuenta h2{
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .cuentas{
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 1160px) {
+  .center{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1102px) {
+  .navbar{
+    display: none;
+  }
+
+  .navbarResponsive{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1026px) {
+  .center{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .cardRegister {
+    flex-direction: column;
+    padding: 40px 40px;
+  }
+
+  .textoCardRegister {
+    order: 0;
+  }
+  .imagenCardRegister {
+    order: 1;
+  }
+}
+@media screen and (min-width: 904px) {
+  #inicioFooterCenter {
+    margin: 0 auto;
+    width: 80vw;
+  }
+
+  #login {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .inicioBannerTitle{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 869px) {
+  .center{
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .loginSubSubtitle {
+    margin-left: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 739px) {
+  #inicioLogin {
+    background: #000;
+  }
+
+  .inicioLoginRegister {
+    background-image: url("../images/inicioLogin.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #inicioMain {
+    justify-content: flex-start;
+  }
+
+  #inicioMain #login {
+    margin-top: -53px;
+    background-color: transparent;
+    margin-left: 0;
+    width: 100%;
+    padding: 50px 30px;
+    max-width: none;
+    min-height: auto;
+  }
+
+  #loginFacebook {
+    margin-top: 30px;
+  }
+
+  #inicioFooter {
+    border-top: 1px solid #aaa;
+  }
+
+  #icon-world {
+    margin-bottom: 0;
+  }
+
+  #inicioFooter .inicioOpciones {
+    width: 90%;
+    margin-bottom: 25px;
+    padding-left: 10px;
+  }
+
+  #inicioFooter .inicioOpciones li {
+    width: 198px;
+  }
+
+  .loginSubtitle,
+  .loginSubSubtitle {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 689px) {
+  .centerLogin h2 {
+    font-size: 1.75rem;
+  }
+
+  .loginSubtitle,
+  .loginSubSubtitle {
+    font-size: 1.125rem;
+  }
+
+  .RegisterForm {
+    flex-direction: column;
+  }
+
+  .inputRegister {
+    width: 90%;
+    padding: 10px;
+    font-size: 14px;
+    height: auto;
+  }
+
+  #loginRegisterInput {
+    height: auto;
+    margin-top: 30px;
+    width: max-content;
+    font-size: 16px;
+  }
+
+  .subheaderLogin {
+    font-size: 1.625rem;
+  }
+
+  .preguntasRegister li,
+  .respuestaRegister p {
+    font-size: 18px;
+  }
+
+  .mainCuenta h2{
+      font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 629px) {
+  .centerLogin,
+  .centerLogin h2 {
+    width: auto;
+    padding: 10px;
+  }
+
+  .inicioBannerTitle img{
+    width: 412px;
+  }
+}
+
+@media screen and (max-width: 571px) {
+  .inicioBannerTitle p{
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 553px) {
+  .iconoN {
+    width: 150px;
+    margin: 10px 20px;
+  }
+
+  #icon-world-header {
+    padding: 2px 10px;
+  }
+
+  #btn-login {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .inicioHeaderRight{
+    margin-right: 5px;
+  }
+
+  .badge{
+    right: 6.3rem;
+    top: 2rem;
+  }
+
+  .iconoN-small{
+    width: 120px !important;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .center{
+    width: 40%;
+  }
+  
+  .inicioMainLogin {
+    min-height: 500px !important;
+  }
+
+  .subheaderLogin {
+    font-size: 1.625rem;
+    text-align: center;
+  }
+  .subParrafo {
+    font-size: 1.125rem;
+    text-align: center;
+  }
+
+  .preguntasRegister {
+    width: 100%;
+  }
+
+  .preguntasRegister li,
+  .respuestaRegister {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+
+  .respuestaRegister p {
+    font-size: 18px;
+  }
+
+  .subTitle{
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  #inicioFooter .inicioOpciones li {
+    width: 150px;
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 517px) {
+  .headerDerecha {
+    padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 497px) {
+    .mainCuenta h2{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 497px) {
+  .iconoN {
+    width: 100px;
+    margin-left: 10px;
+  }
+
+  #icon-world-header {
+    width: 100px;
+  }
+
+  #btn-login {
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+
+  .imgRegisterLogin {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 413px) {
+  .inicioHeaderRight{
+    margin-right: 0;
+  }
+}
