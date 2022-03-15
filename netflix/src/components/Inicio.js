@@ -99,9 +99,11 @@ class Inicio extends Component{
 
                         <RowPeliculas titulo ="Mi lista" peliculasMiLista={window.location.pathname.split("/")[2]} />
 
-                        <RowPeliculas titulo ="Seguir viendo para Adrián" progress="true" />
+                        <RowPeliculas titulo ="Seguir viendo para Adrián" progress="true" peliculasMiLista={window.location.pathname.split("/")[2]} />
 
-                        <RowPeliculas titulo ="Series TV" />
+                        <RowPeliculas titulo ="Series TV" series="true" />
+
+                        <RowPeliculas titulo ="Peliculas" series="true" />
 
                     </div>
 

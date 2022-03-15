@@ -86,7 +86,7 @@ class Header extends Component {
                         </div>
 
                         <i className="fa-solid fa-bell" id="icon-alerta">
-                            <span className="badge">12</span>
+                            <span className="badge">2</span>
                         </i>
                         <div className="alertasInfo">
                             <div className="alerta">

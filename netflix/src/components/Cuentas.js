@@ -39,7 +39,7 @@ class Cuentas extends Component {
             .catch(err => {
                 this.setState({
                     redirect: true
-                })
+                });
             });
     }
 
