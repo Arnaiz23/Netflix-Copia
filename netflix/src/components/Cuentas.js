@@ -5,6 +5,7 @@ import Header from "./Header";
 import { config } from '../config';
 
 import iconoCuenta from '../assets/images/iconoCuenta.jpg';
+import { Navigate } from "react-router-dom";
 
 class Cuentas extends Component {
 
@@ -13,7 +14,8 @@ class Cuentas extends Component {
     state = {
         redirect: null,
         cuenta: {},
-        usuarios: []
+        usuarios: [],
+        login: null
     }
 
     componentDidMount() {
@@ -63,11 +65,20 @@ class Cuentas extends Component {
         })
     }
 
+    irLogin = (e) => {
+        this.setState({
+            login: e.currentTarget.id
+        })
+    }
+
     render() {
+
+        if(this.state.login) return <Navigate to={'/inicio/'+this.state.login} />
+
         if (this.state.usuarios.length >= 1) {
             let listaUsuarios = this.state.usuarios.map(usuario => {
                 return (
-                    <div className="cuenta" key={usuario._id}>
+                    <div className="cuenta" key={usuario._id} id={usuario._id} onClick={this.irLogin}>
                         <img src={iconoCuenta} alt="icono cuenta netflix" className="icon-cuenta" />
                         <h3 className="cuentaNombre">{usuario.nombre}</h3>
                     </div>

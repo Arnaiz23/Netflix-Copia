@@ -204,6 +204,12 @@ body {
   padding: 0.8em 2.2em 0.8em 1.2em;
 }
 
+.passwordEye{
+  position: absolute;
+  right: 42%;
+  color: #808080;
+}
+
 /* * -----------------INICIO DE SESION MAIN------------------------- */
 #inicioMain {
   grid-area: login;
@@ -338,8 +344,7 @@ body {
   display: block;
 }
 
-#loginFacebook::before {
-  content: "\f082";
+.loginFacebook-icon{
   color: #3b5998;
   font-size: 20px;
   margin-right: 10px;

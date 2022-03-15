@@ -17,7 +17,7 @@ class Router extends Component{
                     <Route path="/register" element={<Registro/>} />
                     <Route path="/login" element={<Login/>} />
                     <Route path="/cuentas" element={<Cuentas/>} />
-                    <Route path="/inicio" element={<Inicio/>} />
+                    <Route path="/inicio/:id" element={<Inicio/>} />
                 </Routes>
             </BrowserRouter>
         )

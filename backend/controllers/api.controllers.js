@@ -69,20 +69,20 @@ var controller = {
             if (!pelicula) {
                 return res.status(404).send({
                     status: "error",
-                    messsage: "No existe esa pelicula"
+                    message: "No existe esa pelicula"
                 });
             }
 
             if (err) {
                 return res.status(500).send({
                     status: "error",
-                    messsage: "Ha habido un error"
+                    message: "Ha habido un error"
                 });
             }
 
             return res.status(200).send({
                 status: "success",
-                messsage: pelicula
+                message: pelicula
             });
         });
     },

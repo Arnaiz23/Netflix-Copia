@@ -16,7 +16,9 @@ class Login extends Component {
 
     state = {
         cuenta: {},
-        redirect: null
+        redirect: null,
+        error: null,
+        password: "password"
     }
 
     componentDidMount() {
@@ -32,7 +34,7 @@ class Login extends Component {
             .then(res => {
                 // console.log(res.data);
                 this.setState({
-                    redirect : true
+                    redirect: true
                 });
             })
             .catch(err => {
@@ -52,8 +54,8 @@ class Login extends Component {
     comprobar = (e) => {
         e.preventDefault();
         this.rellenar();
-        
-        axios.post(this.url+'comprobar-cuenta',this.state.cuenta)
+
+        axios.post(this.url + 'comprobar-cuenta', this.state.cuenta)
             .then(res => {
                 // console.log(res.data);
                 localStorage.setItem("token", res.data.token);
@@ -62,13 +64,29 @@ class Login extends Component {
                 });
             })
             .catch(err => {
-                console.error(err);
+                // console.log(err);
+                this.setState({
+                    error: true
+                });
             });
+    }
+
+    mostrarPassword = () => {
+        let password = document.querySelector("#password");
+        if(this.state.password == "text"){
+            this.setState({
+                password: "password"
+            });
+        }else{
+            this.setState({
+                password: "text"
+            });
+        }
     }
 
     render() {
 
-        if(this.state.redirect) return <Navigate to={'/cuentas'} />
+        if (this.state.redirect) return <Navigate to={'/cuentas'} />
 
         return (
             <div id="inicioLogin">
@@ -79,13 +97,34 @@ class Login extends Component {
                         <div id="login">
                             <h2>Iniciar sesión</h2>
                             <form onSubmit={this.comprobar}>
-                                <input type="text" placeholder="Correo electrónico o número de teléfono" id="loginCorreo" ref={this.emailRef} onChange={this.rellenar} />
-                                {/* <p className="incorrectLoginWarning">Escribe un número de teléfono o un correo válidos.</p> */}
-                                <div id="loginPassword">
-                                    <input type="password" placeholder="Contraseña" ref={this.passwordRef} onChange={this.rellenar} />
-                                    <p id="passwordMostrar">MOSTRAR</p>
-                                    <p id="passwordOcultar">OCULTAR</p>
-                                </div>
+
+                                {this.state.error ?
+                                    (
+                                        <React.Fragment>
+                                            <input type="text" placeholder="Correo electrónico o número de teléfono" id="loginCorreo" ref={this.emailRef} onChange={this.rellenar} className="incorrectLoginInput" />
+                                            <p className="incorrectLoginWarning">Escribe un número de teléfono o un correo válidos.</p>
+                                        </React.Fragment>
+                                    ) : (
+                                        <input type="text" placeholder="Correo electrónico o número de teléfono" id="loginCorreo" ref={this.emailRef} onChange={this.rellenar} />
+                                    )
+                                }
+                                {this.state.error ?
+                                    (
+                                        <React.Fragment>
+                                            <div id="loginPassword">
+                                                <input type={this.state.password} placeholder="Contraseña" ref={this.passwordRef} onChange={this.rellenar} className="incorrectLoginInput" id="password" />
+                                                <i className="fa-solid fa-eye-slash passwordEye" onClick={this.mostrarPassword}></i>
+                                            </div>
+                                            <p className="incorrectLoginWarning">La contraseña debe tener entre 4 y 60 caracteres.</p>
+                                        </React.Fragment>
+                                    ) : (
+                                        <div id="loginPassword">
+                                            <input type={this.state.password} placeholder="Contraseña" ref={this.passwordRef} onChange={this.rellenar} id="password" />
+                                            <i className="fa-solid fa-eye-slash passwordEye" onClick={this.mostrarPassword}></i>
+                                        </div>
+                                    )
+                                }
+
                                 {/* <p className="incorrectLoginWarning">La contraseña debe tener entre 4 y 60 caracteres.</p> */}
                                 <input type="submit" value="Iniciar sesión" className="btn btn-danger" id="loginEnviar" />
                             </form>
@@ -98,7 +137,10 @@ class Login extends Component {
                                 </div>
                                 <a href="">¿Necesitas ayuda?</a>
                             </div>
-                            <a href="" id="loginFacebook"> Iniciar sesión con Facebook</a>
+                            <a href="https://www.facebook.com" target={'_blank'} id="loginFacebook">
+                                <i className="fa-brands fa-facebook loginFacebook-icon"></i>
+                                 Iniciar sesión con Facebook
+                            </a>
                             <p id="loginRegisterInfo">¿Todavía sin Netflix? <Link to={'/register'}>Suscríbete ya</Link>.</p>
                             <p id="loginCatpcha">Esta página utiliza Google reCAPTCHA para garantizar que no eres un robot. <a
                                 href="">Más

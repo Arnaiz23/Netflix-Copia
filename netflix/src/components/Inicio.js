@@ -14,11 +14,21 @@ class Inicio extends Component{
 
     state = {
         redirect: null,
-        cuenta : {}
+        cuenta : {},
+        usuario : null,
+        miLista : [],
+        peliculasMiLista : []
     }
 
     componentDidMount(){
         this.getUsuario();
+        this.setState({
+            usuario: window.location.pathname.split("/")[2]
+        });
+        // ! Ahora tengo tanto los datos de la cuenta actual como del usuario
+        setTimeout(()=>{
+            this.getMiLista();
+        }, 200);
     }
 
     getUsuario = () => {
@@ -28,16 +38,49 @@ class Inicio extends Component{
 
         axios.post(this.url + "cuenta",token)
             .then(res => {
-                console.log(res.data.usuario[0]);
+                // console.log(res.data.usuario[0]);
                 this.setState({
                     cuenta : res.data.usuario[0]
-                })
+                });
             })
             .catch(err => {
                 this.setState({
                     redirect : true
                 })
             })
+    }
+
+    getMiLista = () => {
+        axios(this.url + 'usuario/'+window.location.pathname.split("/")[2])
+            .then(res => {
+                // console.log(res.data.message.miLista);
+                this.setState({
+                    miLista : res.data.message.miLista
+                });
+                this.getPeliculasLista();
+            });
+    }
+
+    getPeliculasLista = () => {
+        this.state.miLista.map(pelicula => {
+            axios(this.url + 'pelicula/'+pelicula)
+                .then(res => {
+                    if (this.state.peliculasMiLista.length == 0) {
+                        this.setState({
+                            peliculasMiLista: [
+                                res.data.message
+                            ]
+                        });
+                    } else {
+                        this.setState({
+                            peliculasMiLista: [
+                                this.state.peliculasMiLista[0],
+                                res.data.message
+                            ]
+                        });
+                    }
+                });
+        });
     }
     
     render(){
@@ -53,11 +96,13 @@ class Inicio extends Component{
                     <Slider />
 
                     <div className="centralNetflix">
-                        <RowPeliculas titulo ="Mi lista" />
+
+                        <RowPeliculas titulo ="Mi lista" peliculasMiLista={this.state.peliculasMiLista} />
 
                         <RowPeliculas titulo ="Seguir viendo para Adrián" progress="true" />
 
                         <RowPeliculas titulo ="Series TV" />
+                        
                     </div>
 
                 </main>

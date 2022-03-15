@@ -3,6 +3,13 @@ import React, { Component } from "react";
 import imagen from '../assets/images/familiaAlInstante.jpg';
 
 class RowPeliculas extends Component {
+
+    componentDidMount() {
+        if (this.props.peliculasMiLista) {
+            console.log(this.props.peliculasMiLista);
+        }
+    }
+
     render() {
         return (
             <div className="row">
