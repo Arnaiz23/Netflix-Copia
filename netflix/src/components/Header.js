@@ -54,11 +54,11 @@ class Header extends Component {
                         <img src={Logo} alt="icono netflix" className="iconoN iconoN-small" />
                         <nav className="navbar">
                             <ul>
-                                <li><Link to={'/inicio'} className="optionActive">Inicio</Link></li>
-                                <li><a href="">Series TV</a></li>
-                                <li><a href="">Peliculas</a></li>
+                                <li><NavLink to={'/inicio/'+this.props.id} >Inicio</NavLink></li>
+                                <li><NavLink to={'/series/'+this.props.id}>Series TV</NavLink></li>
+                                <li><NavLink to={'/peliculas/'+this.props.id}>Peliculas</NavLink></li>
                                 <li><a href="">Novedades más vistas</a></li>
-                                <li><a href="milista.html">Mi lista</a></li>
+                                <li><NavLink to={'/miLista/'+this.props.id}>Mi lista</NavLink></li>
                             </ul>
                         </nav>
                         <nav className="navbarResponsive">

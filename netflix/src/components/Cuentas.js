@@ -121,6 +121,8 @@ class Cuentas extends Component {
 
         if (this.state.login) return <Navigate to={'/inicio/' + this.state.login} />
 
+        if (this.state.redirect) return <Navigate to={'/login'} />
+
         if (this.state.usuarios.length >= 1) {
             // {console.log(this.state.usuarios);}
             let listaUsuarios = this.state.usuarios.map(usuario => {
