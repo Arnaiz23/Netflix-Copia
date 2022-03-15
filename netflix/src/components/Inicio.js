@@ -51,7 +51,7 @@ class Inicio extends Component{
     }
 
     getMiLista = () => {
-        axios(this.url + 'usuario/'+window.location.pathname.split("/")[2])
+        axios(this.url + 'usuario/'+this.state.usuario)
             .then(res => {
                 // console.log(res.data.message.miLista);
                 this.setState({
@@ -97,12 +97,12 @@ class Inicio extends Component{
 
                     <div className="centralNetflix">
 
-                        <RowPeliculas titulo ="Mi lista" peliculasMiLista={this.state.peliculasMiLista} />
+                        <RowPeliculas titulo ="Mi lista" peliculasMiLista={window.location.pathname.split("/")[2]} />
 
                         <RowPeliculas titulo ="Seguir viendo para Adrián" progress="true" />
 
                         <RowPeliculas titulo ="Series TV" />
-                        
+
                     </div>
 
                 </main>
