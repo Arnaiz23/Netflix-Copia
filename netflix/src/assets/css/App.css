@@ -990,6 +990,10 @@ body {
 
 .iconoPeliculas img {
   border-radius: 5px;
+  width: 400px;
+  object-fit: cover;
+  height: 266px;
+  overflow: hidden;
 }
 
 .subTitle {
