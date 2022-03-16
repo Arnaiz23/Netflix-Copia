@@ -59,57 +59,92 @@
                 });
             </script>
 
-            <i class="fa-solid fa-bell" id="icon-alerta">
-                <span class="badge">12</span>
-            </i>
-            <div class="alertasInfo">
-                <div class="alerta">
-                    <img src="./images/inicio.jpg" alt="icono serie netflix" class="alerta-small" />
-                    <div>
-                        <p>Recordatorio: nueva temporada. Ya puedes ver la 5 temporada</p>
-                        <p class="fechaAlerta">hace 4 días</p>
+            <span id="menuAlertas">
+                <i class="fa-solid fa-bell" id="icon-alerta">
+                    <span class="badge">2</span>
+                </i>
+                <div class="alertasInfo">
+                    <div class="alerta">
+                        <img src={iconoAlertas} alt="icono serie netflix" class="alerta-small" />
+                        <div>
+                            <p>Recordatorio: nueva temporada. Ya puedes ver la 5 temporada</p>
+                            <p class="fechaAlerta">hace 4 días</p>
+                        </div>
+                    </div>
+                    <div class="lineaNav"></div>
+                    <div class="alerta">
+                        <img src={iconoAlertas} alt="icono serie netflix" class="alerta-small" />
+                        <div>
+                            <p>Recordatorio: nueva temporada. Ya puedes ver la 5 temporada</p>
+                            <p class="fechaAlerta">hace 4 días</p>
+                        </div>
                     </div>
                 </div>
-                <div class="lineaNav"></div>
-                <div class="alerta">
-                    <img src="./images/inicio.jpg" alt="icono serie netflix" class="alerta-small" />
-                    <div>
-                        <p>Recordatorio: nueva temporada. Ya puedes ver la 5 temporada</p>
-                        <p class="fechaAlerta">hace 4 días</p>
-                    </div>
-                </div>
-            </div>
+            </span>
+
             <span class="menuCuentaHeader">
                 <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
                 <i class="fa-solid fa-angle-down"></i>
+                <div class="menuCuentaHeaderInfo">
+                    <div class="menuOscuro">
+                        <div class="cuentaNav">
+                            <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
+                            <p>Adrian</p>
+                        </div>
+                        <div class="cuentaNav">
+                            <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
+                            <p>Adrian</p>
+                        </div>
+                        <div class="cuentaNav">
+                            <i class="fa-solid fa-pen icono-small"></i>
+                            <p>Administrar perfiles</p>
+                        </div>
+                        <div class="lineaNav"></div>
+                        <div class="cuentaNav">
+                            <i class="fa-solid fa-user icono-small"></i>
+                            <p>Cuenta</p>
+                        </div>
+                        <div class="cuentaNav">
+                            <i class="fa-solid fa-circle-question icono-small"></i>
+                            <p>Centro de ayuda</p>
+                        </div>
+                        <div class="lineaNav"></div>
+                        <div class="cuentaNav">
+                            <p>Cerrar sesión en Netflix</p>
+                        </div>
+                    </div>
+                </div>
             </span>
-            <div class="menuCuentaHeaderInfo">
-                <div class="cuentaNav">
-                    <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
-                    <p>Adrian</p>
+            <!-- <div class="menuCuentaHeaderInfo">
+                <div class="menuTransparent"></div>
+                <div class="menuOscuro">
+                    <div class="cuentaNav">
+                        <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
+                        <p>Adrian</p>
+                    </div>
+                    <div class="cuentaNav">
+                        <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
+                        <p>Adrian</p>
+                    </div>
+                    <div class="cuentaNav">
+                        <i class="fa-solid fa-pen icono-small"></i>
+                        <p>Administrar perfiles</p>
+                    </div>
+                    <div class="lineaNav"></div>
+                    <div class="cuentaNav">
+                        <i class="fa-solid fa-user icono-small"></i>
+                        <p>Cuenta</p>
+                    </div>
+                    <div class="cuentaNav">
+                        <i class="fa-solid fa-circle-question icono-small"></i>
+                        <p>Centro de ayuda</p>
+                    </div>
+                    <div class="lineaNav"></div>
+                    <div class="cuentaNav">
+                        <p>Cerrar sesión en Netflix</p>
+                    </div>
                 </div>
-                <div class="cuentaNav">
-                    <img src="./images/iconoCuenta.jpg" alt="icono cuenta netflix" class="icono-small" />
-                    <p>Adrian</p>
-                </div>
-                <div class="cuentaNav">
-                    <i class="fa-solid fa-pen icono-small"></i>
-                    <p>Administrar perfiles</p>
-                </div>
-                <div class="lineaNav"></div>
-                <div class="cuentaNav">
-                    <i class="fa-solid fa-user icono-small"></i>
-                    <p>Cuenta</p>
-                </div>
-                <div class="cuentaNav">
-                    <i class="fa-solid fa-circle-question icono-small"></i>
-                    <p>Centro de ayuda</p>
-                </div>
-                <div class="lineaNav"></div>
-                <div class="cuentaNav">
-                    <p>Cerrar sesión en Netflix</p>
-                </div>
-            </div>
+            </div> -->
         </div>
     </header>
     <main class="mainInicio">
@@ -133,10 +168,10 @@
         <div class="centralNetflix">
             <div class="row">
                 <h3 class="subTitle">
-                    Mi lista 
+                    Mi lista
                     <i class="fa-solid fa-angle-right ver-mas"></i>
                     <span class="explorar">
-                        Explorar todo 
+                        Explorar todo
                         <i class="fa-solid fa-angle-right"></i>
                     </span>
                 </h3>

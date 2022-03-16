@@ -50,12 +50,6 @@ class RowPeliculas extends Component {
                             ]
                         });
                     } else {
-                        /* this.setState({
-                            peliculasMiLista: [
-                                this.state.peliculasMiLista[0],
-                                res.data.message
-                            ]
-                        }); */
                         let peliculas = this.state.peliculasMiLista;
                         peliculas.push(res.data.message);
 
