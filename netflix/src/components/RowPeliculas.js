@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { config } from "../config";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 
 class RowPeliculas extends Component {
@@ -11,7 +12,8 @@ class RowPeliculas extends Component {
         usuario: "",
         peliculasMiLista: [],
         miLista: [],
-        peliculas: []
+        peliculas: [],
+        redirect: null
     }
 
     componentDidMount() {
@@ -26,6 +28,24 @@ class RowPeliculas extends Component {
         if (this.props.series) {
             this.getPeliculas();
         }
+        if (this.props.miLista) {
+            this.setState({
+                usuario: this.props.miLista
+            });
+            setTimeout(() => {
+                this.getMiListaSolo();
+            }, 300);
+        }
+    }
+
+    getMiListaSolo = () => {
+        axios(this.url + 'usuario/' + this.state.usuario)
+            .then(res => {
+                // console.log(res.data.message.miLista);
+                this.setState({
+                    miLista: res.data.message.miLista
+                });
+            });
     }
 
     getMiLista = () => {
@@ -71,7 +91,61 @@ class RowPeliculas extends Component {
             });
     }
 
+    addMiLista = (e) => {
+        // alert("añadir");
+
+        let miLista = this.state.miLista;
+        miLista.push(e.target.id);
+        
+        let data = {
+            "miLista" : miLista
+        };
+        
+        axios.put(this.url + 'usuario/' + this.state.usuario, data)
+            .then(res =>{
+                // console.log(res.data);
+                this.setState({
+                    redirect: true
+                });
+            })
+            .catch(err =>{});
+
+        let add = e.target;
+        let quitar = e.target.nextElementSibling;
+
+        add.classList.toggle("miListaShow");
+        quitar.classList.toggle("miListaShow");
+    }
+
+    quitarMiLista = (e) => {
+        // alert("quitar");
+        let miLista = this.state.miLista;
+        miLista.splice(miLista.indexOf(e.target.id),1);
+        
+        let data = {
+            "miLista" : miLista
+        };
+        
+        axios.put(this.url + 'usuario/' + this.state.usuario, data)
+            .then(res =>{
+                this.setState({
+                    redirect: true
+                });
+            })
+            .catch(err =>{});
+        
+        let add = e.target;
+        let quitar = e.target.previousElementSibling;
+
+        add.classList.toggle("miListaShow");
+        quitar.classList.toggle("miListaShow");
+
+        
+    }
+
     render() {
+
+        if(this.state.redirect) return <Navigate to={'/redirectUsuario/'+this.state.usuario} />
 
         if (this.props.peliculasMiLista) {
 
@@ -80,7 +154,7 @@ class RowPeliculas extends Component {
                 let miLista = [];
 
                 if (this.props.progress) {
-                    let lista = this.state.peliculasMiLista.slice(0,2);
+                    let lista = this.state.peliculasMiLista.slice(0, 2);
                     miLista = lista.map(pelicula => {
                         return (
                             <div className="iconoPeliculas" key={pelicula._id} id={pelicula._id}>
@@ -94,93 +168,148 @@ class RowPeliculas extends Component {
                         return (
                             <div className="iconoPeliculas" key={pelicula._id} id={pelicula._id}>
                                 <img src={this.url + 'getImage/' + pelicula.image} alt={pelicula.title} />
+                                <div className="peliculaHover">
+                                    <img src={this.url + 'getImage/' + pelicula.image} alt="familia al instante" />
+                                    <div className="peliculaHoverInfo">
+                                        <div className="peliculaHoverRow">
+                                            <div className="optionsHover">
+                                                <i className="fa-solid fa-play"></i>
+                                                <i className="fa-solid fa-plus miLista" title="Añadir a Mi Lista" onClick={this.addMiLista} id={pelicula._id}></i>
+                                                <i className="fa-solid fa-check miLista miListaShow" title="Quitar de Mi Lista" onClick={this.quitarMiLista} id={pelicula._id}></i>
+                                                <i className="fa-solid fa-thumbs-up" title="Dar me gusta"></i>
+                                                <i className="fa-solid fa-thumbs-down" title="Dar dislike"></i>
+                                            </div>
+                                            <i className="fa-solid fa-chevron-down"></i>
+                                        </div>
+                                        <div className="peliculaHoverRow">
+                                            <p className="coincidencia">98% de coincidencia</p>
+                                            <span className={"edad-" + pelicula.edad}>{pelicula.edad}+</span>
+                                            <p className="temporardas">{pelicula.duracion}</p>
+                                            <span className="hd">HD</span>
+                                        </div>
+                                        <div className="peliculaHoverRow">
+                                            <p className="genero">{pelicula.generos[0]}</p>
+                                            <p className="genero">{pelicula.generos[1]}</p>
+                                            <p className="genero">{pelicula.generos[2]}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         )
                     });
                 }
 
-            return (
-                <div className="row">
-                    <h3 className="subTitle">
-                        {this.props.titulo}
-                        <i className="fa-solid fa-angle-right ver-mas"></i>
-                        <span className="explorar">
-                            Explorar todo
-                            <i className="fa-solid fa-angle-right"></i>
-                        </span>
-                    </h3>
-                    <div className="iconosPrincipales">
-                        {miLista}
-                        {/* <div className="peliculaHover">
-                            <img src="./images/familiaAlInstante.jpg" alt="familia al instante" />
-                            <div className="peliculaHoverInfo">
-                                <div className="peliculaHoverRow">
-                                    <div className="optionsHover">
-                                        <i className="fa-solid fa-play"></i>
-                                        <i className="fa-solid fa-plus"></i>
-                                            <i className="fa-solid fa-check"></i>
-                                        <i className="fa-solid fa-thumbs-up"></i>
-                                        <i className="fa-solid fa-thumbs-down"></i>
-                                    </div>
-                                    <i className="fa-solid fa-chevron-down"></i>
-                                </div>
-                                <div className="peliculaHoverRow">
-                                    <p className="coincidencia">98% de coincidencia</p>
-                                    <span className="edad-7">7+</span>
-                                    <p className="temporardas">1h 59min</p>
-                                    <span className="hd">HD</span>
-                                </div>
-                                <div className="peliculaHoverRow">
-                                    <p className="genero">Irreverente</p>
-                                    <p className="genero">Optimista</p>
-                                    <p className="genero">Conmovedora</p>
-                                </div>
-                            </div>
-                        </div> */}
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div className="row">
-                    <h3 className="subTitle">
-                        {this.props.titulo}
-                        <i className="fa-solid fa-angle-right ver-mas"></i>
-                        <span className="explorar">
-                            Explorar todo
-                            <i className="fa-solid fa-angle-right"></i>
-                        </span>
-                    </h3>
-                    <h4 className="subtituloSinData">Actualmente no hay ninguna pelicula / serie</h4>
-                </div>
-            )
-        }
-    } else if(this.props.series) {
-        if (this.state.peliculas.length >= 1) {
-
-            let miLista = this.state.peliculas.map(pelicula => {
                 return (
-                    <div className="iconoPeliculas" key={pelicula._id} id={pelicula._id}>
-                        <img src={this.url + 'getImage/' + pelicula.image} alt={pelicula.title} />
+                    <div className="row">
+                        <h3 className="subTitle">
+                            {this.props.titulo}
+                            <i className="fa-solid fa-angle-right ver-mas"></i>
+                            <span className="explorar">
+                                Explorar todo
+                                <i className="fa-solid fa-angle-right"></i>
+                            </span>
+                        </h3>
+                        <div className="iconosPrincipales">
+                            {miLista}
+                        </div>
                     </div>
                 )
-            });
-
-            return (
-                <div className="row">
-                    <h3 className="subTitle">
-                        {this.props.titulo}
-                        <i className="fa-solid fa-angle-right ver-mas"></i>
-                        <span className="explorar">
-                            Explorar todo
-                            <i className="fa-solid fa-angle-right"></i>
-                        </span>
-                    </h3>
-                    <div className="iconosPrincipales">
-                        {miLista}
+            } else {
+                return (
+                    <div className="row">
+                        <h3 className="subTitle">
+                            {this.props.titulo}
+                            <i className="fa-solid fa-angle-right ver-mas"></i>
+                            <span className="explorar">
+                                Explorar todo
+                                <i className="fa-solid fa-angle-right"></i>
+                            </span>
+                        </h3>
+                        <h4 className="subtituloSinData">Actualmente no hay ninguna pelicula / serie</h4>
                     </div>
-                </div>
-            )
+                )
+            }
+        } else if (this.props.series) {
+            if (this.state.peliculas.length >= 1) {
+
+                let miLista = this.state.peliculas.map(pelicula => {
+
+                    return (
+                        <div className="iconoPeliculas" key={pelicula._id} id={pelicula._id}>
+                            <img src={this.url + 'getImage/' + pelicula.image} alt={pelicula.title} />
+                            <div className="peliculaHover">
+                                <img src={this.url + 'getImage/' + pelicula.image} alt="familia al instante" />
+                                <div className="peliculaHoverInfo">
+                                    <div className="peliculaHoverRow">
+                                        <div className="optionsHover">
+                                            <i className="fa-solid fa-play"></i>
+                                            {/* <i className="fa-solid fa-plus miLista" title="Añadir a Mi Lista" onClick={this.addMiLista}></i>
+                                            <i className="fa-solid fa-check miLista miListaShow" title="Quitar de Mi Lista" onClick={this.quitarMiLista}></i> */}
+                                            {this.state.miLista.includes(pelicula._id) ?
+                                                (
+                                                    <React.Fragment>
+                                                        <i className="fa-solid fa-plus miLista" title="Añadir a Mi Lista" onClick={this.addMiLista} id={pelicula._id}></i>
+                                                        <i className="fa-solid fa-check miLista miListaShow" title="Quitar de Mi Lista" onClick={this.quitarMiLista} id={pelicula._id}></i>
+                                                    </React.Fragment>
+                                                ) : (
+                                                    <React.Fragment>
+                                                        <i className="fa-solid fa-plus miLista miListaShow" title="Añadir a Mi Lista" onClick={this.addMiLista} id={pelicula._id}></i>
+                                                        <i className="fa-solid fa-check miLista" title="Quitar de Mi Lista" onClick={this.quitarMiLista} id={pelicula._id}></i>
+                                                    </React.Fragment>
+                                                )
+                                            }
+                                            <i className="fa-solid fa-thumbs-up" title="Dar me gusta"></i>
+                                            <i className="fa-solid fa-thumbs-down" title="Dar dislike"></i>
+                                        </div>
+                                        <i className="fa-solid fa-chevron-down"></i>
+                                    </div>
+                                    <div className="peliculaHoverRow">
+                                        <p className="coincidencia">98% de coincidencia</p>
+                                        <span className={"edad-" + pelicula.edad}>{pelicula.edad}+</span>
+                                        <p className="temporardas">{pelicula.duracion}</p>
+                                        <span className="hd">HD</span>
+                                    </div>
+                                    <div className="peliculaHoverRow">
+                                        <p className="genero">{pelicula.generos[0]}</p>
+                                        <p className="genero">{pelicula.generos[1]}</p>
+                                        <p className="genero">{pelicula.generos[2]}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                });
+
+                return (
+                    <div className="row">
+                        <h3 className="subTitle">
+                            {this.props.titulo}
+                            <i className="fa-solid fa-angle-right ver-mas"></i>
+                            <span className="explorar">
+                                Explorar todo
+                                <i className="fa-solid fa-angle-right"></i>
+                            </span>
+                        </h3>
+                        <div className="iconosPrincipales">
+                            {miLista}
+                        </div>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="row">
+                        <h3 className="subTitle">
+                            {this.props.titulo}
+                            <i className="fa-solid fa-angle-right ver-mas"></i>
+                            <span className="explorar">
+                                Explorar todo
+                                <i className="fa-solid fa-angle-right"></i>
+                            </span>
+                        </h3>
+                        <h4 className="subtituloSinData">Actualmente no hay ninguna pelicula / serie</h4>
+                    </div>
+                )
+            }
         } else {
             return (
                 <div className="row">
@@ -196,21 +325,6 @@ class RowPeliculas extends Component {
                 </div>
             )
         }
-    } else {
-    return (
-        <div className="row">
-            <h3 className="subTitle">
-                {this.props.titulo}
-                <i className="fa-solid fa-angle-right ver-mas"></i>
-                <span className="explorar">
-                    Explorar todo
-                    <i className="fa-solid fa-angle-right"></i>
-                </span>
-            </h3>
-            <h4 className="subtituloSinData">Actualmente no hay ninguna pelicula / serie</h4>
-        </div>
-    )
-}
     }
 }
 

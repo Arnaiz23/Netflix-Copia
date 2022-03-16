@@ -24,6 +24,10 @@ var peliculaSchema = new Schema({
         type: Array,
         required: true
     },
+    edad: {
+        type : String,
+        required: true
+    },
     duracion : {
         type: String,
         required: true

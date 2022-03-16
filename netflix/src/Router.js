@@ -39,12 +39,16 @@ class Router extends Component{
                     <Route path="/search/:id/:search" element={<Search/>} />
 
                     <Route path="/miLista/:id" element={<MiLista/>} />
+                    <Route path="/redirectMiLista/:id" element={<RedirectMiLista/>} />
 
                     <Route path="/series/:id" element={<Series/>} />
+                    <Route path="/redirectSeries/:id" element={<RedirectSeries/>} />
 
                     <Route path="/peliculas/:id" element={<Peliculas/>} />
+                    <Route path="/redirectPeliculas/:id" element={<RedirectPeliculas/>} />
 
                     <Route path="/novedades/:id" element={<Novedades/>} />
+                    <Route path="/redirectNovedades/:id" element={<RedirectNovedades/>} />
                 </Routes>
             </BrowserRouter>
         )
@@ -54,6 +58,26 @@ class Router extends Component{
 function Redirectuser(){
     let id = window.location.pathname.split("/")[2];
     return <Navigate to={'/inicio/'+id}/>
+}
+
+function RedirectMiLista(){
+    let id = window.location.pathname.split("/")[2];
+    return <Navigate to={'/miLista/'+id}/>
+}
+
+function RedirectPeliculas(){
+    let id = window.location.pathname.split("/")[2];
+    return <Navigate to={'/peliculas/'+id}/>
+}
+
+function RedirectSeries(){
+    let id = window.location.pathname.split("/")[2];
+    return <Navigate to={'/series/'+id}/>
+}
+
+function RedirectNovedades(){
+    let id = window.location.pathname.split("/")[2];
+    return <Navigate to={'/novedades/'+id}/>
 }
 
 function RedirectSearch(){

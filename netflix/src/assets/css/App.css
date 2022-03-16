@@ -992,7 +992,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   width: 100%;
 }
 
@@ -1002,7 +1002,7 @@ body {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  z-index: 2;
+  position: relative;
 }
 
 .iconoPeliculas img {
@@ -1171,13 +1171,22 @@ body {
   border-radius: 13px;
   background: #000000;
   box-shadow: 12px 12px 24px #000000, -12px -12px 24px #141414;
-  /* z-index: 3; */
+  z-index: 20;
 
   position: absolute;
-  /* display: none; */
+  top: -1rem;
+  display: none;
 }
 
-.iconoPeliculas:hover ~ .peliculaHover {
+.miLista{
+  display: none !important;
+}
+
+.miListaShow{
+  display: flex !important;
+}
+
+.iconoPeliculas:hover  .peliculaHover {
   display: flex;
 }
 
