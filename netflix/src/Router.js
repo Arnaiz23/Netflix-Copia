@@ -3,13 +3,15 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Cuentas from './components/Cuentas';
 import Login from './components/Login';
-import Registro from './components/Registro';
+import Principal from './components/Principal';
 import Inicio from './components/Inicio';
 import NewCuenta from './components/NewCuenta';
 import MiLista from './components/MiLista';
 import Series from './components/Series';
 import Peliculas from './components/Peliculas';
 import Search from './components/Search';
+import Novedades from './components/Novedades';
+import Registro from './components/Registro';
 
 
 class Router extends Component{
@@ -17,8 +19,10 @@ class Router extends Component{
         return(
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Registro/>} />
-                    <Route path="/register" element={<Registro/>} />
+                    <Route path="/" element={<Principal/>} />
+                    <Route path="/principal" element={<Principal/>} />
+
+                    <Route path="/registro" element={<Registro/>} />
 
                     <Route path="/login" element={<Login/>} />
 
@@ -31,6 +35,7 @@ class Router extends Component{
                     <Route path="/redirectUsuario/:id" element={<Redirectuser/>} />
 
                     <Route path="/redirectSearch/:id/:search" element={<RedirectSearch/>} />
+                    <Route path="/redirectSearch/:id/" element={<RedirectSearch/>} />
                     <Route path="/search/:id/:search" element={<Search/>} />
 
                     <Route path="/miLista/:id" element={<MiLista/>} />
@@ -38,6 +43,8 @@ class Router extends Component{
                     <Route path="/series/:id" element={<Series/>} />
 
                     <Route path="/peliculas/:id" element={<Peliculas/>} />
+
+                    <Route path="/novedades/:id" element={<Novedades/>} />
                 </Routes>
             </BrowserRouter>
         )
@@ -52,7 +59,11 @@ function Redirectuser(){
 function RedirectSearch(){
     let id = window.location.pathname.split("/")[2];
     let search = window.location.pathname.split("/")[3];
-    return <Navigate to={'/search/'+id+'/'+search}/>
+    if(search == ""){
+        return <Navigate to={'/inicio/'+id}/>
+    }else{
+        return <Navigate to={'/search/'+id+'/'+search}/>
+    }
 }
 
 export default Router;

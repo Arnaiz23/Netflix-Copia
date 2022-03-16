@@ -13,11 +13,11 @@ class Slider extends Component {
                     <div>
                         <span className="btn btn-light" id="play">
                             <i className="fa-solid fa-play"></i>
-                            <a href="">Reproducir</a>
+                            <a>Reproducir</a>
                         </span>
                         <span className="btn btn-secondary" id="masInfo">
                             <i className="fa-solid fa-circle-info"></i>
-                            <a href="">Más información</a>
+                            <a>Más información</a>
                         </span>
                     </div>
                 </div>

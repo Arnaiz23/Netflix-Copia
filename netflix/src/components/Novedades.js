@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
+
+import Footer from "./Footer";
+import Header from "./Header";
+import { config } from '../config';
 import { Navigate } from "react-router-dom";
 
-import {config}  from '../config';
-import Header from "./Header";
-import Footer from "./Footer";
-
-class Search extends Component {
+class Novedades extends Component {
 
     url = config.url;
 
     state = {
         id: window.location.pathname.split("/")[2],
-        search : window.location.pathname.split("/")[3],
-        peliculas: [],
+        series: [],
         status: null
     }
 
@@ -22,46 +21,49 @@ class Search extends Component {
         this.getPeliculas();
     }
 
+    getPeliculas = () => {
+        axios(this.url + 'peliculas')
+            .then(res => {
+                this.setState({
+                    series: res.data.messsage,
+                    status: "true"
+                })
+            });
+    }
+
     getUsuario = () => {
         let token = {
-            token: localStorage.getItem("token")
+            token : localStorage.getItem("token")
         };
 
-        axios.post(this.url + "cuenta", token)
+        axios.post(this.url + "cuenta",token)
             .then(res => {
                 // console.log(res.data.usuario[0]);
                 this.setState({
-                    cuenta: res.data.usuario[0]
+                    cuenta : res.data.usuario[0]
                 });
             })
             .catch(err => {
                 this.setState({
-                    redirect: true
+                    redirect : true
                 })
             })
     }
 
-    getPeliculas = () => {
-        axios(this.url + 'search-peliculas/' + this.state.search)
-            .then(res => {
-                this.setState({
-                    peliculas: res.data.peliculas
-                });
-            });
-    }
-
     render() {
 
-        if (this.state.redirect) return <Navigate to={'/login'} />
+        if(this.state.redirect) return <Navigate to={'/login'} />
 
-        if (this.state.peliculas.length >= 1) {
-            let lista = this.state.peliculas.map(pelicula => {
+        if (this.state.series.length >= 1) {
+
+            let lista = this.state.series.map(serie => {
                 return (
-                    <div className="iconoPeliculas margin-bottom" key={pelicula._id}>
-                        <img src={this.url + "getImage/" + pelicula.image} alt={pelicula.title} />
+                    <div className="iconoPeliculas margin-bottom" key={serie._id}>
+                        <img src={this.url + "getImage/" + serie.image} alt={serie.title} />
                     </div>
                 )
-            });
+            })
+
             return (
                 <React.Fragment>
                     <Header inicio="true" id={this.state.id} />
@@ -69,7 +71,7 @@ class Search extends Component {
                     <main className="mainInicio">
                         <div className="centralNetflix mainMiLista">
                             <div className="row">
-                                <h3 className="subTitle">Buscador: {this.state.search}</h3>
+                                <h3 className="subTitle">Novedades</h3>
                                 <div className="iconosPrincipales iconosMiLista">
                                     {lista}
                                 </div>
@@ -80,7 +82,7 @@ class Search extends Component {
                     <Footer inicio="true" />
                 </React.Fragment>
             )
-        } else if (this.state.peliculas.length == 0 && this.state.status === "true") {
+        } else if (this.state.series.length == 0 && this.state.status === "true") {
             return (
                 <React.Fragment>
                     <Header inicio="true" id={this.state.id} />
@@ -88,8 +90,8 @@ class Search extends Component {
                     <main className="mainInicio">
                         <div className="centralNetflix mainMiLista">
                             <div className="row">
-                                <h3 className="subTitle">Mi lista</h3>
-                                <h3 className="subtituloSinData">Actualmente no hay peliculas / series en tu lista</h3>
+                                <h3 className="subTitle">Novedades</h3>
+                                <h3 className="subtituloSinData">Cargando ...</h3>
                             </div>
                         </div>
                     </main>
@@ -105,7 +107,7 @@ class Search extends Component {
                     <main className="mainInicio">
                         <div className="centralNetflix mainMiLista">
                             <div className="row">
-                                <h3 className="subTitle">Mi lista</h3>
+                                <h3 className="subTitle">Novedades</h3>
                                 <h3 className="subtituloSinData">Cargando ...</h3>
                             </div>
                         </div>
@@ -115,10 +117,7 @@ class Search extends Component {
                 </React.Fragment>
             )
         }
-
     }
-
 }
 
-
-export default Search;
+export default Novedades;

@@ -3,7 +3,8 @@ import { Link, Navigate, NavLink } from "react-router-dom";
 import axios from "axios";
 
 import Logo from '../assets/images/Icono.png';
-import iconoAlertas from '../assets/images/inicio.jpg';
+import iconoAlertas from '../assets/images/vikings.jpg';
+import iconoAlertas2 from '../assets/images/TLK.jpg';
 import iconoCuenta from '../assets/images/iconoCuenta.jpg';
 import { config } from '../config';
 
@@ -16,8 +17,8 @@ class Header extends Component {
 
     state = {
         search: {
-            search : "",
-            redirect : null
+            search: "",
+            redirect: null
         },
         sesionOff: null,
         volverUsuarios: null,
@@ -25,15 +26,17 @@ class Header extends Component {
         usuarios: [],
         usuariosBuenos: [],
         status: null,
-        nuevoUsuario : {
-            redirect : null,
-            usuario : ""
+        nuevoUsuario: {
+            redirect: null,
+            usuario: ""
         },
-        idUsuario : window.location.pathname.split("/")[2]
+        idUsuario: window.location.pathname.split("/")[2]
     }
 
     componentDidMount() {
-        this.getUsuario();
+        if(this.props.login != "true"){
+            this.getUsuario();
+        }
     }
 
     getUsuario = () => {
@@ -65,7 +68,7 @@ class Header extends Component {
     rellenarSearch = () => {
         this.setState({
             search: {
-                search : this.searchRef.current.value
+                search: this.searchRef.current.value
             }
         });
     }
@@ -88,16 +91,9 @@ class Header extends Component {
         this.setState({
             search: {
                 search: this.state.search.search,
-                redirect : true
+                redirect: true
             }
         });
-        // console.log(this.state);
-        /* axios(this.url + 'search-peliculas/' + this.state.search)
-            .then(res => {
-                this.setState({
-                    peliculas: res.data.peliculas
-                });
-            }); */
     }
 
     cerrarSesion = () => {
@@ -110,9 +106,9 @@ class Header extends Component {
     cambiarUsuario = (e) => {
         // console.log(e.currentTarget.id);
         this.setState({
-            nuevoUsuario : {
-                redirect : true,
-                usuario : e.currentTarget.id
+            nuevoUsuario: {
+                redirect: true,
+                usuario: e.currentTarget.id
             }
         });
     }
@@ -148,9 +144,9 @@ class Header extends Component {
 
     render() {
 
-        if(this.state.search.redirect) return <Navigate to={'/redirectSearch/' + this.state.idUsuario + '/' + this.state.search.search} />
+        if (this.state.search.redirect) return <Navigate to={'/redirectSearch/' + this.state.idUsuario + '/' + this.state.search.search} />
 
-        if(this.state.nuevoUsuario.redirect) return <Navigate to={'/redirectUsuario/' + this.state.nuevoUsuario.usuario} />
+        if (this.state.nuevoUsuario.redirect) return <Navigate to={'/redirectUsuario/' + this.state.nuevoUsuario.usuario} />
 
         if (this.state.usuariosBuenos.length >= 1) {
             var usuarios = this.state.usuariosBuenos.map(usuario => {
@@ -217,21 +213,22 @@ class Header extends Component {
                                 <li><NavLink to={'/inicio/' + this.props.id} >Inicio</NavLink></li>
                                 <li><NavLink to={'/series/' + this.props.id}>Series TV</NavLink></li>
                                 <li><NavLink to={'/peliculas/' + this.props.id}>Peliculas</NavLink></li>
-                                <li><a href="">Novedades más vistas</a></li>
+                                <li><NavLink to={'/novedades/' + this.props.id}>Novedades más vistas</NavLink></li>
                                 <li><NavLink to={'/miLista/' + this.props.id}>Mi lista</NavLink></li>
                             </ul>
                         </nav>
                         <nav className="navbarResponsive">
                             <ul>
                                 <li>
-                                    <p>Menu <i className="fa-solid fa-caret-down"></i></p>
-                                    <ul className="navResponsive">
-                                        <li><a href="" className="optionActive">Inicio</a></li>
-                                        <li><a href="">Series TV</a></li>
-                                        <li><a href="">Peliculas</a></li>
-                                        <li><a href="">Novedades más vistas</a></li>
-                                        <li><a href="">Mi lista</a></li>
-                                    </ul>
+                                    <b>Menu <i className="fa-solid fa-caret-down"></i>
+                                        <ul className="navResponsive">
+                                            <li><NavLink to={'/inicio/' + this.props.id} >Inicio</NavLink></li>
+                                            <li><NavLink to={'/series/' + this.props.id}>Series TV</NavLink></li>
+                                            <li><NavLink to={'/peliculas/' + this.props.id}>Peliculas</NavLink></li>
+                                            <li><NavLink to={'/novedades/' + this.props.id}>Novedades más vistas</NavLink></li>
+                                            <li><NavLink to={'/miLista/' + this.props.id}>Mi lista</NavLink></li>
+                                        </ul>
+                                    </b>
                                 </li>
                             </ul>
                         </nav>
@@ -256,12 +253,12 @@ class Header extends Component {
                                     <img src={iconoAlertas} alt="icono serie netflix" className="alerta-small" />
                                     <div>
                                         <p>Recordatorio: nueva temporada. Ya puedes ver la 5 temporada</p>
-                                        <p className="fechaAlerta">hace 4 días</p>
+                                        <p className="fechaAlerta">hace 2 días</p>
                                     </div>
                                 </div>
                                 <div className="lineaNav"></div>
                                 <div className="alerta">
-                                    <img src={iconoAlertas} alt="icono serie netflix" className="alerta-small" />
+                                    <img src={iconoAlertas2} alt="icono serie netflix" className="alerta-small" />
                                     <div>
                                         <p>Recordatorio: nueva temporada. Ya puedes ver la 5 temporada</p>
                                         <p className="fechaAlerta">hace 4 días</p>

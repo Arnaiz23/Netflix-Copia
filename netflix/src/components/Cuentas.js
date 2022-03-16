@@ -180,7 +180,7 @@ class Cuentas extends Component {
                                 <h3 className="cuentaNombre">Añadir perfil</h3>
                             </Link>
                         </div>
-                        <a href="" className="btn btn-transparent" id="administrarCuentas">Administrar perfiles</a>
+                        <p className="btn btn-transparent" id="administrarCuentas">Administrar perfiles</p>
                     </main>
                 </React.Fragment>
             )

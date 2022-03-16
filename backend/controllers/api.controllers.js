@@ -317,7 +317,7 @@ var controller = {
                 });
             }
 
-            Cuenta.find({ usuario: user.usuario}, (err, usuario) => {
+            Cuenta.find({ email: user.email}, (err, usuario) => {
                 if (err) {
                     return res.status(500).send({
                         status: "error",

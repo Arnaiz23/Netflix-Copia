@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import axios from "axios";
 
-import {config} from '../config';
+import { config } from '../config';
 import { Navigate } from "react-router-dom";
+import Header from "./Header";
 
 class NewCuenta extends Component {
 
@@ -18,21 +19,21 @@ class NewCuenta extends Component {
     });
 
     state = {
-        usuario : {},
-        redirect : null,
-        usuarios : [],
-        id : ""
+        usuario: {},
+        redirect: null,
+        usuarios: [],
+        id: ""
     }
 
-    componentDidMount(){
+    componentDidMount() {
         let token = {
             token: localStorage.getItem("token")
         }
         axios.post(this.url + 'cuenta', token)
             .then(res => {
                 this.setState({
-                    usuarios : res.data.usuario[0].usuarios,
-                    id : res.data.usuario[0]._id
+                    usuarios: res.data.usuario[0].usuarios,
+                    id: res.data.usuario[0]._id
                 });
             })
     }
@@ -40,7 +41,7 @@ class NewCuenta extends Component {
     rellenar = () => {
         this.setState({
             usuario: {
-                nombre : this.nombreRef.current.value,
+                nombre: this.nombreRef.current.value,
                 miLista: []
             }
         });
@@ -51,7 +52,7 @@ class NewCuenta extends Component {
         this.rellenar();
 
         if (this.validator.allValid()) {
-            
+
             // console.log(this.state.usuario);
 
             axios.post(this.url + 'usuario', this.state.usuario)
@@ -66,7 +67,7 @@ class NewCuenta extends Component {
                     });
                 });
 
-        }else{
+        } else {
 
             this.setState({
                 status: 'failed'
@@ -82,30 +83,33 @@ class NewCuenta extends Component {
         let usuarios = this.state.usuarios;
         usuarios.push(this.state.usuario._id);
         let data = {
-            usuarios : usuarios
+            usuarios: usuarios
         };
-        axios.put(this.url + 'cuentas/'+this.state.id, data)
+        axios.put(this.url + 'cuentas/' + this.state.id, data)
             .then(res => {
                 this.setState({
-                    redirect : true
+                    redirect: true
                 });
             });
     }
-    
+
     render() {
 
-        if(this.state.redirect) return <Navigate to={'/cuentas'} />
-        
+        if (this.state.redirect) return <Navigate to={'/cuentas'} />
+
         return (
             <React.Fragment>
-                <form onClick={this.crearUsuario}>
+                <Header login="true" />
+
+                <form onSubmit={this.crearUsuario} className="newCuentaForm">
                     <h3>Nuevo usuario</h3>
 
-                    <div>
-                        <label htmlFor="nombre">Nombre</label>
-                        <input type="text" id="nombre" ref={this.nombreRef} onChange={this.rellenar} />
-
-                        {this.validator.message('nombre', this.state.usuario.nombre, 'required')}
+                    <div className="newCuentaData">
+                        <div className="newCuentaNombre">
+                            <label htmlFor="nombre">Nombre</label>
+                            <input type="text" id="nombre" ref={this.nombreRef} onChange={this.rellenar} />
+                            {this.validator.message('nombre', this.state.usuario.nombre, 'required')}
+                        </div>
                     </div>
 
                     <input type="submit" className="btn btn-light" />

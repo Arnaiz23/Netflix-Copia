@@ -141,7 +141,7 @@ class Login extends Component {
                                 <i className="fa-brands fa-facebook loginFacebook-icon"></i>
                                  Iniciar sesión con Facebook
                             </a>
-                            <p id="loginRegisterInfo">¿Todavía sin Netflix? <Link to={'/register'}>Suscríbete ya</Link>.</p>
+                            <p id="loginRegisterInfo">¿Todavía sin Netflix? <Link to={'/registro'}>Suscríbete ya</Link>.</p>
                             <p id="loginCatpcha">Esta página utiliza Google reCAPTCHA para garantizar que no eres un robot. <a
                                 href="">Más
                                 información</a></p>

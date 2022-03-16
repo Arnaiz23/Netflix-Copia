@@ -1,102 +1,141 @@
 import React, { Component } from "react";
+import { Link, Navigate } from "react-router-dom";
+import axios from 'axios';
+import SimpleReactValidator from "simple-react-validator";
 
 import Footer from "./Footer";
 import Header from "./Header";
 
-import TvYMas from '../assets/images/tv2.png';
-import Tv from '../assets/images/tv.png';
-import Movil from '../assets/images/strangers.jpg';
-import Infantil from '../assets/images/infantil.png';
+import { config } from '../config';
 
 class Registro extends Component {
+
+    url = config.url;
+
+    emailRef = React.createRef();
+    passwordRef = React.createRef();
+    tarjetaRef = React.createRef();
+
+    validator = new SimpleReactValidator({
+        messages: {
+            required: "Este campo es obligatorio",
+            email: "Este campo debe ser un correo válido"
+        }
+    });
+
+    state = {
+        cuenta: {},
+        redirect: null,
+        error: null,
+        password: "password"
+    }
+
+    rellenar = (e) => {
+        this.setState({
+            cuenta: {
+                email: this.emailRef.current.value,
+                password: this.passwordRef.current.value,
+                facturacion : this.tarjetaRef.current.value,
+            }
+        });
+    }
+
+    comprobar = (e) => {
+        e.preventDefault();
+        this.rellenar();
+
+        if(this.validator.allValid()){
+            // console.log(this.state.cuenta);
+            axios.post(this.url + 'cuentas', this.state.cuenta)
+                .then(res => {
+                    // console.log(res.data);
+                    this.setState({
+                        redirect: true
+                    });
+                })
+                .catch(err => {
+                    this.setState({
+                        error : true
+                    })
+                })
+        }else{
+            this.validator.showMessages();
+            this.forceUpdate();
+        }
+    }
+
+    mostrarPassword = () => {
+        let password = document.querySelector("#password");
+        if (this.state.password == "text") {
+            this.setState({
+                password: "password"
+            });
+        } else {
+            this.setState({
+                password: "text"
+            });
+        }
+    }
+
     render() {
+
+        if (this.state.redirect) return <Navigate to={'/login'} />
+
         return (
-            <React.Fragment>
-                <div id="inicioLogin" className="inicioLoginRegister">
-                    <Header
-                        registro="true"
-                    />
-                </div>
+            <div id="inicioLogin">
+                <div id="inicioLoginOscuro">
+                    <Header login="true" />
 
-                <div className="registerLogin">
-                    <div className="cardRegister">
-                        <div className="textoCardRegister">
-                            <h3 className="subheaderLogin">Disfruta de netflix en tu TV.</h3>
-                            <p className="subParrafo">Smart TV, Playstation, Xbox, Chromecast, Apple TV, reproductores Blu-ray y muchos más.</p>
-                        </div>
-                        <div className="imagenCardRegister">
-                            <img src={Tv} alt="tv netflix" className="imgRegisterLogin" />
-                        </div>
-                    </div>
-                </div>
-                <div className="registerLogin">
-                    <div className="cardRegister">
-                        <div className="imagenCardRegister">
-                            <img src={Movil} alt="Strangers Things" className="imgRegisterLogin" />
-                        </div>
-                        <div className="textoCardRegister">
-                            <h3 className="subheaderLogin">Descárgate tus series favoritas para verlas sin conexión.</h3>
-                            <p className="subParrafo">Guarda tus títulos favoritos fácilmente para que siempre tengas algo para ver.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="registerLogin">
-                    <div className="cardRegister">
-                        <div className="textoCardRegister">
-                            <h3 className="subheaderLogin">Disfruta en todas partes.</h3>
-                            <p className="subParrafo">Reproduce en streaming todas las películas y series en tu móvil, tableta, ordenador y TV sin pagar más.</p>
-                        </div>
-                        <div className="imagenCardRegister">
-                            <img src={TvYMas} alt="tv netflix" className="imgRegisterLogin" />
-                        </div>
-                    </div>
-                </div>
-                <div className="registerLogin" >
-                    <div className="cardRegister">
-                        <div className="imagenCardRegister">
-                            <img src={Infantil} alt="infantil netflix" className="imgRegisterLogin" />
-                        </div>
-                        <div className="textoCardRegister">
-                            <h3 className="subheaderLogin">Crea perfiles infantiles.</h3>
-                            <p className="subParrafo">Deja que los niños vivan aventuras con sus personajes favoritos en un espacio diseñado exclusivamente para ellos, gratis con tu suscripción.</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="registerLoginPreguntas" id="registerLoginLast">
-                    <h2 className="subheaderLogin">Preguntas frecuentes</h2>
-                    <ul className="preguntasRegister">
-                        <li>¿Qué es Netflix?</li>
-                        <div className="respuestaRegister">
-                            <p>Netflix es un servicio de streaming que ofrece una amplia variedad de series, películas, títulos de anime, documentales y otros contenidos premiados en miles de dispositivos conectados a internet.</p>
-                            <p>Puedes ver todo el contenido que quieras, cuando quieras y sin un solo anuncio por una tarifa mensual reducida. ¡Siempre hay algo nuevo que descubrir, y cada semana se añaden nuevas series y películas!</p>
-                        </div>
-                        <li>¿Cuánto cuesta Netflix?</li>
-                        <div className="respuestaRegister">
-                            <p>Disfruta de Netflix en tu smartphone, tableta, Smart TV, ordenador o dispositivo de streaming, todo por una tarifa mensual fija. Planes desde 7,99 € a 17,99 € al mes. Sin cargos adicionales ni contratos.</p>
-                        </div>
-                        <li>¿Donde puedo ver Netflix?</li>
-                        <div className="respuestaRegister">
-                            <p>Disfruta donde quieras y cuando quieras. Inicia sesión con tu cuenta de Netflix para disfrutar al instante de todo el contenido de netflix.com desde tu ordenador personal o en cualquier dispositivo conectado a internet que ofrezca la aplicación de Netflix, entre ellos, smart TV, smartphones, tabletas, reproductores multimedia de streaming y consolas de juegos.</p>
-                            <p>También puedes descargar tus series favoritas con la aplicación de iOS, Android o Windows 10. Utiliza las descargas para ver títulos dondequiera que vayas y cuando no dispongas de conexión a internet. Netflix siempre te acompaña.</p>
-                        </div>
-                        <li>¿Cómo cancelo?</li>
-                        <div className="respuestaRegister">
-                            <p>Netflix es flexible. Sin contratos liosos ni compromisos. Puedes cancelar fácilmente tu cuenta en línea con tan solo dos clics. Sin cargos por cancelación: activa o cancela tu cuenta en cualquier momento.</p>
-                        </div>
-                        <li>¿Qué puedo ver en Netflix?</li>
-                        <div className="respuestaRegister">
-                            <p>Netflix dispone de una amplia biblioteca de originales de Netflix galardonados, títulos de anime, series de TV, documentales, largometrajes y otros contenidos. Ve todo el contenido que quieras, cuando quieras.</p>
-                        </div>
-                        <li>¿Es Netflix bueno para los niños?</li>
-                        <div className="respuestaRegister">
-                            <p>La experiencia infantil de Netflix se incluye en la suscripción para que los padres tengan el control mientras los niños disfrutan de series y películas familiares en su propio espacio.</p>
-                            <p>Los perfiles infantiles incluyen controles parentales protegidos por PIN que te permiten restringir la calificación por edades del contenido que pueden ver los niños y bloquear determinados títulos que no quieras que vean.</p>
-                        </div>
-                    </ul>
-                </div>
+                    <div id="inicioMain">
+                        <div id="login">
+                            <h2>Registro</h2>
+                            <form onSubmit={this.comprobar}>
 
-                <Footer registro="true" />
-            </React.Fragment>
+                                <input type="text" name="correo" placeholder="Correo electrónico o número de teléfono" id="loginCorreo" ref={this.emailRef} onChange={this.rellenar} />
+
+                                {this.validator.message('correo', this.state.cuenta.email, 'required|email')}
+
+                                <div id="loginPassword">
+                                    <input type={this.state.password} name="password" placeholder="Contraseña" ref={this.passwordRef} onChange={this.rellenar} id="password" />
+                                    <i className="fa-solid fa-eye-slash passwordEye" onClick={this.mostrarPassword}></i>
+                                </div>
+
+                                {this.validator.message('password', this.state.cuenta.password, 'required|min:8', {
+                                    messages : {
+                                        min: "La contraseña debe tener al menos 8 caracteres"
+                                    }
+                                })}
+
+                                <input type="text" name="tarjeta" placeholder="Tarjeta de crédito" ref={this.tarjetaRef} onChange={this.rellenar} />
+
+                                {this.validator.message('tarjeta', this.state.cuenta.facturacion, 'required|numeric|size:16', {
+                                    messages : {
+                                        size: "Debe tener 16 numeros"
+                                    }
+                                })}
+
+                                <input type="submit" value="Registrarse" className="btn btn-danger" id="loginEnviar" />
+                            </form>
+
+
+                            <div id="loginOpciones">
+                                <span></span>
+                                <a href="">¿Necesitas ayuda?</a>
+                            </div>
+                            <a href="https://www.facebook.com" target={'_blank'} id="loginFacebook">
+                                <i className="fa-brands fa-facebook loginFacebook-icon"></i>
+                                Iniciar sesión con Facebook
+                            </a>
+                            <p id="loginRegisterInfo">¿Tienes cuenta? <Link to={'/login'}>Inicia sesión</Link>.</p>
+                            <p id="loginCatpcha">Esta página utiliza Google reCAPTCHA para garantizar que no eres un robot. <a
+                                href="">Más
+                                información</a></p>
+                        </div>
+                    </div>
+
+                    <Footer registro="true" />
+                </div>
+            </div>
         )
     }
 }

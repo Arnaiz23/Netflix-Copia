@@ -183,7 +183,7 @@ body {
 .preguntasRegister li::after {
   content: "\2b";
   position: absolute;
-  right: 30%;
+  right: 15%;
 }
 
 .respuestaRegister {
@@ -287,7 +287,7 @@ body {
   border-bottom: 2px solid #e87c03 !important;
 }
 
-.incorrectLoginWarning {
+.incorrectLoginWarning, .srv-validation-message {
   color: #e87c03;
   font-size: 12px;
   padding-left: 14px;
@@ -678,13 +678,17 @@ body {
   list-style: none;
 }
 
-.navbarResponsive > ul > li > p:hover ~ .navResponsive {
-  opacity: 1;
+.navbarResponsive > ul > li > b:hover  .navResponsive {
+  /* opacity: 1; */
+  visibility: visible;
+  /* display: flex; */
 }
 
 .navResponsive {
-  transition: opacity 1s;
-  opacity: 0;
+  transition: visibility .3s;
+  /* opacity: 0; */
+  visibility: hidden;
+  /* display: none; */
   position: absolute;
   background-color: rgba(0, 0, 0, 0.8);
   border-top: 2px solid #fff;
@@ -696,6 +700,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  z-index: 10;
 }
 
 .navResponsive li:hover {
@@ -834,6 +839,7 @@ body {
   position: absolute;
   top: 4.5rem;
   visibility: hidden;
+  z-index: 10;
 }
 
 .cuentaNav {
@@ -857,7 +863,7 @@ body {
   border-bottom: 1px solid #808080;
 }
 
-/* #menuAlertas:hover  .alertasInfo {
+/* #menuAlertas >p:hover  .alertasInfo {
   visibility: visible;
 } */
 .mostrarAlertas {
@@ -918,10 +924,12 @@ body {
 
 #masInfo a {
   color: #fff;
+  margin-left: 10px;
 }
 
 #play a {
   color: #000;
+  margin-left: 10px;
 }
 
 .btn-light:hover a {
@@ -1283,6 +1291,64 @@ body {
   color: #fff;
   padding-left: 3rem;
   font-size: 1.2rem;
+}
+
+/* * ------------------------------------------------------------------ */
+
+/* * ----------------------------NEW CUENTA--------------------------- */
+
+.newCuentaForm{
+  width: 70%;
+  margin: 10% auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  user-select: none;
+}
+
+.newCuentaForm h3{
+  color: #fff;
+  font-size: 4rem;
+  margin-bottom: 3rem;
+}
+
+.newCuentaData{
+  width: 100%;
+}
+
+.newCuentaNombre{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.newCuentaNombre label{
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.newCuentaNombre input{
+  width: 300px;
+  padding: 5px;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.newCuentaNombre input:focus{
+  outline: none;
+}
+
+.newCuentaNombre .srv-validation-message{
+  /* margin-bottom: 3rem; */
+  font-size: 1rem;
+}
+
+.newCuentaForm > input{
+  margin-top: 2rem;
 }
 
 /* * ------------------------------------------------------------------ */
