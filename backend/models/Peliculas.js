@@ -34,6 +34,14 @@ var peliculaSchema = new Schema({
     },
     image : {
         type: String
+    },
+    novedad:{
+        type: String,
+        required: true
+    },
+    tipo: {
+        type: String,
+        required: true
     }
 });
 

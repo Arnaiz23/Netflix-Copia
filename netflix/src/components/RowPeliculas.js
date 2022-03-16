@@ -82,13 +82,24 @@ class RowPeliculas extends Component {
     }
 
     getPeliculas = () => {
-        axios(this.url + 'peliculas/true')
+        if(this.props.pelicula){
+            axios(this.url + 'peliculasTipo/pelicula')
             .then(res => {
                 // console.log(res.data.messsage);
                 this.setState({
-                    peliculas: res.data.messsage
+                    peliculas: res.data.message
                 });
             });
+        }else{
+            axios(this.url + 'peliculasTipo/serie')
+            .then(res => {
+                // console.log(res.data.messsage);
+                this.setState({
+                    peliculas: res.data.message
+                });
+            });
+        }
+        
     }
 
     addMiLista = (e) => {

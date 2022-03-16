@@ -103,7 +103,7 @@ class Inicio extends Component{
 
                         <RowPeliculas titulo ="Series TV" series="true" miLista={window.location.pathname.split("/")[2]} />
 
-                        <RowPeliculas titulo ="Peliculas" series="true" miLista={window.location.pathname.split("/")[2]} />
+                        <RowPeliculas titulo ="Peliculas" series="true" pelicula="true" miLista={window.location.pathname.split("/")[2]} />
 
                     </div>
 

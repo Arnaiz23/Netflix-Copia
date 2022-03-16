@@ -25,10 +25,10 @@ class Peliculas extends Component {
     }
 
     getPeliculas = () => {
-        axios(this.url + 'peliculas')
+        axios(this.url + 'peliculasTipo/pelicula')
             .then(res => {
                 this.setState({
-                    series: res.data.messsage,
+                    series: res.data.message,
                     status: "true"
                 })
             });
