@@ -18,7 +18,7 @@ var controller = {
     getPeliculas: (req, res) => {
         const last = req.params.last;
 
-        if(last){
+        if (last) {
             Pelicula.find((err, peliculas) => {
                 if (!peliculas) {
                     return res.status(404).send({
@@ -26,20 +26,20 @@ var controller = {
                         messsage: "No hay películas actualmente"
                     });
                 }
-    
+
                 if (err) {
                     return res.status(500).send({
                         status: "error",
                         messsage: "Ha habido un error"
                     });
                 }
-    
+
                 return res.status(200).send({
                     status: "success",
                     messsage: peliculas
                 });
             }).limit(6);
-        }else{
+        } else {
             Pelicula.find((err, peliculas) => {
                 if (!peliculas) {
                     return res.status(404).send({
@@ -47,14 +47,14 @@ var controller = {
                         messsage: "No hay películas actualmente"
                     });
                 }
-    
+
                 if (err) {
                     return res.status(500).send({
                         status: "error",
                         messsage: "Ha habido un error"
                     });
                 }
-    
+
                 return res.status(200).send({
                     status: "success",
                     messsage: peliculas
@@ -86,10 +86,10 @@ var controller = {
             });
         });
     },
-    getPeliculasTipo : (req, res) => {
+    getPeliculasTipo: (req, res) => {
         let tipo = req.params.tipo;
 
-        Pelicula.find({tipo: tipo}, (err, peliculas) => {
+        Pelicula.find({ tipo: tipo }, (err, peliculas) => {
             if (!peliculas || peliculas.length == 0) {
                 return res.status(404).send({
                     status: "error",
@@ -110,8 +110,8 @@ var controller = {
             });
         });
     },
-    getPeliculasNovedades : (req, res) => {
-        Pelicula.find({novedad: true}, (err, peliculas) =>{
+    getPeliculasNovedades: (req, res) => {
+        Pelicula.find({ novedad: true }, (err, peliculas) => {
             if (!peliculas || peliculas.length == 0) {
                 return res.status(404).send({
                     status: "error",
@@ -224,7 +224,7 @@ var controller = {
         })
 
     },
-    searchPeliculas : (req,res) => {
+    searchPeliculas: (req, res) => {
         const search = req.params.search;
 
         Pelicula.find({
@@ -253,7 +253,7 @@ var controller = {
             });
         });
     },
-    getImage : (req, res) => {
+    getImage: (req, res) => {
         var file = req.params.image;
         var path_file = './upload/peliculas/' + file;
 
@@ -320,7 +320,7 @@ var controller = {
                         pelicula
                     });
                 });
-            }else{  //En caso de que no sepa el id
+            } else {  //En caso de que no sepa el id
                 return res.status(200).send({
                     status: "success",
                     image: file_name
@@ -363,7 +363,7 @@ var controller = {
                 });
             }
 
-            Cuenta.find({ email: user.email}, (err, usuario) => {
+            Cuenta.find({ email: user.email }, (err, usuario) => {
                 if (err) {
                     return res.status(500).send({
                         status: "error",
@@ -437,6 +437,46 @@ var controller = {
         const usuarioId = req.params.id;
         const body = req.body;
 
+        const usuario = await Cuenta.findOne({ _id: usuarioId });
+
+        if (!usuario) {
+            return res.status(404).send({
+                status: "error",
+                message: "No existe ese usuario"
+            });
+        }
+
+        if (body.hasOwnProperty("password")) {
+            if (body.password == "") {
+                // res.send("Vacia")
+                body.password = usuario.password;
+            } else {
+                let newPassword = await Cuenta.encrypt(body.password);
+                body.password = newPassword;
+            }
+        }
+
+        if (body.hasOwnProperty("email")) {
+            if (body.email != "") {
+                let correoValido = await Cuenta.findOne({ email: body.email });
+                if (correoValido) {
+                    return res.status(404).send({
+                        status: "error",
+                        message: "Ese email ya esta en uso"
+                    });
+                }
+            } else {
+                body.email = usuario.email;
+            }
+        }
+
+        if (body.hasOwnProperty("facturacion")) {
+            if (body.facturacion == "") {
+                // res.send("Vacia")
+                body.facturacion = usuario.facturacion;
+            }
+        }
+
         Cuenta.findByIdAndUpdate(usuarioId, body, (err, usuario) => {
             if (err || !usuario) {
                 return res.status(404).send({
@@ -450,7 +490,7 @@ var controller = {
                 message: usuario
             });
 
-        })
+        });
 
 
     },
@@ -472,9 +512,9 @@ var controller = {
         });
     },
     comprobarCuenta: (req, res) => {
-        const body = req.body;
+        const {body, recuerdame} = req.body;
 
-        Cuenta.findOne({email: body.email}, async (err, cuenta) => {
+        Cuenta.findOne({ email: body.email }, async (err, cuenta) => {
             if (err) {
                 return res.status(500).send({
                     status: "error",
@@ -489,22 +529,31 @@ var controller = {
                 });
             }
 
-            if(cuenta) {
+            if (cuenta) {
                 const verificado = await Cuenta.comparePassword(body.password, cuenta.password);
 
-                if(verificado){
+                if (verificado) {
                     const payload = {
                         password: body.password,
                         id: body._id,
                         email: body.email
                     }
-                    const token = jwt.sign(payload, config.llave, { expiresIn: 1440 });
-        
+
+                    let tiempo = 0;
+
+                    if(recuerdame){
+                        tiempo = 86400;
+                    }else{
+                        tiempo = 3600;
+                    }
+
+                    const token = jwt.sign(payload, config.llave, { expiresIn: tiempo });
+
                     return res.status(200).send({
                         status: "success",
                         token
                     });
-                }else{
+                } else {
                     return res.status(404).send({
                         status: "error",
                         message: "Las contraseñas no coinciden!!!"
@@ -582,7 +631,7 @@ var controller = {
             });
         });
     },
-    getUsuario : (req, res) => {
+    getUsuario: (req, res) => {
         const usuarioId = req.params.id;
 
         Usuario.findById(usuarioId, (err, usuario) => {
@@ -606,11 +655,11 @@ var controller = {
             });
         })
     },
-    deleteUsuario : (req, res) => {
+    deleteUsuario: (req, res) => {
         const usuarioId = req.params.id;
 
-        Usuario.findByIdAndDelete(usuarioId,(err, usuario) => {
-            if(err || !usuario){
+        Usuario.findByIdAndDelete(usuarioId, (err, usuario) => {
+            if (err || !usuario) {
                 return res.status(404).send({
                     status: "error",
                     message: "Hay un error al eliminar!!!"
@@ -624,12 +673,12 @@ var controller = {
 
         });
     },
-    updateUsuario : (req, res) => {
+    updateUsuario: (req, res) => {
         const usuarioId = req.params.id;
         const body = req.body;
 
         Usuario.findByIdAndUpdate(usuarioId, body, (err, usuario) => {
-            if(err || !usuario){
+            if (err || !usuario) {
                 return res.status(404).send({
                     status: "error",
                     message: "Hay un error al modificar!!!"

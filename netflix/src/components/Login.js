@@ -55,7 +55,20 @@ class Login extends Component {
         e.preventDefault();
         this.rellenar();
 
-        axios.post(this.url + 'comprobar-cuenta', this.state.cuenta)
+        let recuerdame = document.querySelector("#recuerdame");
+
+        let recuerdameData = false;
+
+        if(recuerdame.checked){
+            recuerdameData = true;
+        }
+        
+        let data = {
+            body : this.state.cuenta,
+            recuerdame : recuerdameData
+        }
+
+        axios.post(this.url + 'comprobar-cuenta', data)
             .then(res => {
                 // console.log(res.data);
                 localStorage.setItem("token", res.data.token);

@@ -22,7 +22,8 @@ class NewCuenta extends Component {
         usuario: {},
         redirect: null,
         usuarios: [],
-        id: ""
+        id: "",
+        redirectLogin : null
     }
 
     componentDidMount() {
@@ -34,6 +35,11 @@ class NewCuenta extends Component {
                 this.setState({
                     usuarios: res.data.usuario[0].usuarios,
                     id: res.data.usuario[0]._id
+                });
+            })
+            .catch(err =>{
+                this.setState({
+                    redirectLogin: true
                 });
             })
     }
@@ -96,6 +102,8 @@ class NewCuenta extends Component {
     render() {
 
         if (this.state.redirect) return <Navigate to={'/cuentas'} />
+
+        if (this.state.redirectLogin) return <Navigate to={'/login'} />
 
         return (
             <React.Fragment>

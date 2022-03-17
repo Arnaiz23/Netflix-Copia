@@ -12,7 +12,7 @@ var usuarioSchema = new Schema({
     },
     nombre : {
         type: String,
-        unique: true
+        unique : false
     },
     miLista : [
         {

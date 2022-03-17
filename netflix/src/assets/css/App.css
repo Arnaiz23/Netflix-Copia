@@ -1428,6 +1428,10 @@ body {
   color: #ddd;
 }
 
+.formCuentaCampo span{
+  position: relative;
+}
+
 .formCuentaCampo input:focus{
   outline: none;
   background-color: rgba(0, 0, 0, 0.562);
@@ -1445,6 +1449,24 @@ body {
 
 #confirmarCuenta{
   margin-top: 2rem;
+}
+
+.errorTexto{
+  color: #e50914;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.passwordCuenta{
+  position: absolute;
+  top: 0.2rem;
+  right: 1rem;
+  color: #fff;
+  display: none;
+}
+
+.passwordCuentaShow{
+  display: block;
 }
 
 /* * ------------------------------------------------------------------ */

@@ -31,6 +31,7 @@ class Router extends Component{
                     <Route path="/new-cuenta" element={<NewCuenta/>} />
 
                     <Route path="/edit-cuenta/:id" element={<ModificarCuenta/>} />
+                    <Route path="/redirectCuenta/:id" element={<RedirectCuenta/>} />
 
                     <Route path="/inicio/:id" element={<Inicio/>} />
                     <Route path="/inicio" element={<Cuentas/>} />
@@ -61,6 +62,11 @@ class Router extends Component{
 function Redirectuser(){
     let id = window.location.pathname.split("/")[2];
     return <Navigate to={'/inicio/'+id}/>
+}
+
+function RedirectCuenta(){
+    let id = window.location.pathname.split("/")[2];
+    return <Navigate to={'/edit-cuenta/'+id}/>
 }
 
 function RedirectMiLista(){
