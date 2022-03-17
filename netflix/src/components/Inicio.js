@@ -91,7 +91,7 @@ class Inicio extends Component{
             <React.Fragment>
                 <Header inicio="true" id={window.location.pathname.split("/")[2]} />
                 
-                <main className="mainInicio">
+                <main>
                 
                     <Slider />
 

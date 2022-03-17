@@ -488,6 +488,14 @@ body {
   background-color: rgba(80, 80, 80, 0.568);
 }
 
+.btn-success{
+  background-color: rgb(3, 179, 3);
+}
+
+.btn-success:hover{
+  background-color: rgb(2, 150, 2);
+}
+
 /* * ------------------------------------------------------------------ */
 
 /* * -----------------INICIO DE SESION FOOTER------------------------- */
@@ -851,7 +859,7 @@ body {
   transition: visibility 0.2s;
 }
 
-.cuentaNav p {
+.cuentaNav p, .cuentaNav a {
   color: #fff;
   font-size: 0.8rem;
   margin-left: 0.7rem;
@@ -1357,6 +1365,85 @@ body {
 }
 
 .newCuentaForm > input{
+  margin-top: 2rem;
+}
+
+/* * ------------------------------------------------------------------ */
+
+/* * ----------------------------CUENTA MOD------------------------------- */
+
+.mainInicio{
+  min-height: 644px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  user-select: none;
+}
+
+.mainInicio h2{
+  font-size: 3rem;
+  color: #fff;
+  margin: 5rem 0 2rem 0;
+}
+
+.linea{
+  border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+  margin: 1rem 0;
+  width: 50%;
+}
+
+.formCuenta{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
+}
+
+.formCuentaCampo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.formCuentaCampo label{
+  font-size: 2rem;
+  color: #ddd;
+  margin: 1rem;
+}
+
+.formCuentaCampo input{
+  width: 350px;
+  padding: .3rem;
+  padding-left: .5rem;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #e50914;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #ddd;
+}
+
+.formCuentaCampo input:focus{
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.562);
+}
+
+#eliminarCuenta{
+  margin-top: 2rem;
+}
+
+#eliminarCuentaBtn{
+  margin-bottom: 2rem;
+  width: 150px;
+  text-align: center;
+}
+
+#confirmarCuenta{
   margin-top: 2rem;
 }
 

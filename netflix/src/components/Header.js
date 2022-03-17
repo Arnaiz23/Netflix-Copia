@@ -278,7 +278,7 @@ class Header extends Component {
                                 <div className="lineaNav"></div>
                                 <div className="cuentaNav">
                                     <i className="fa-solid fa-user icono-small"></i>
-                                    <p>Cuenta</p>
+                                    <Link to={'/edit-cuenta/'+this.props.id}>Cuenta</Link>
                                 </div>
                                 <div className="cuentaNav">
                                     <i className="fa-solid fa-circle-question icono-small"></i>

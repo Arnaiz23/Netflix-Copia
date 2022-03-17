@@ -12,6 +12,7 @@ import Peliculas from './components/Peliculas';
 import Search from './components/Search';
 import Novedades from './components/Novedades';
 import Registro from './components/Registro';
+import ModificarCuenta from './components/ModificarCuenta';
 
 
 class Router extends Component{
@@ -28,6 +29,8 @@ class Router extends Component{
 
                     <Route path="/cuentas" element={<Cuentas/>} />
                     <Route path="/new-cuenta" element={<NewCuenta/>} />
+
+                    <Route path="/edit-cuenta/:id" element={<ModificarCuenta/>} />
 
                     <Route path="/inicio/:id" element={<Inicio/>} />
                     <Route path="/inicio" element={<Cuentas/>} />

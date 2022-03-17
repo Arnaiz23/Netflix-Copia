@@ -24,10 +24,10 @@ class Novedades extends Component {
     }
 
     getPeliculas = () => {
-        axios(this.url + 'peliculas')
+        axios(this.url + 'peliculasNovedad')
             .then(res => {
                 this.setState({
-                    series: res.data.messsage,
+                    series: res.data.message,
                     status: "true"
                 })
             });

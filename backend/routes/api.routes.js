@@ -16,6 +16,7 @@ router.get("/", controllers.prueba);
 router.get("/peliculas/:last?" , controllers.getPeliculas); //Obtener todas las peliculas
 router.get("/pelicula/:id", controllers.getPelicula); //Una pelicula
 router.get("/peliculasTipo/:tipo", controllers.getPeliculasTipo); //Todas las peliculas de un tipo
+router.get("/peliculasNovedad", controllers.getPeliculasNovedades); //Todas las novedades
 router.post("/peliculas" ,controllers.newPelicula); //Nueva pelicula
 router.delete("/peliculas/:id" ,controllers.deletePelicula); //Eliminar pelicula
 router.put("/peliculas/:id" ,controllers.updatePelicula); //Modificar pelicula

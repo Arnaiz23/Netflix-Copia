@@ -36,7 +36,7 @@ var peliculaSchema = new Schema({
         type: String
     },
     novedad:{
-        type: String,
+        type: Boolean,
         required: true
     },
     tipo: {

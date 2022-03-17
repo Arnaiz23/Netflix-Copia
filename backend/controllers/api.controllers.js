@@ -110,6 +110,28 @@ var controller = {
             });
         });
     },
+    getPeliculasNovedades : (req, res) => {
+        Pelicula.find({novedad: true}, (err, peliculas) =>{
+            if (!peliculas || peliculas.length == 0) {
+                return res.status(404).send({
+                    status: "error",
+                    message: "No existen novedades"
+                });
+            }
+
+            if (err) {
+                return res.status(500).send({
+                    status: "error",
+                    message: "Ha habido un error"
+                });
+            }
+
+            return res.status(200).send({
+                status: "success",
+                message: peliculas
+            });
+        });
+    },
     newPelicula: (req, res) => {
         var body = req.body;
 
