@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import swal from "sweetalert";
 
 import Footer from "./Footer";
 import Header from "./Header";
@@ -9,6 +10,10 @@ import Movil from '../assets/images/strangers.jpg';
 import Infantil from '../assets/images/infantil.png';
 
 class Principal extends Component {
+
+    componentDidMount(){
+        swal("Instrucciones", `Lease las instrucciones antes de continuar: \n https://github.com/Arnaiz23/Netflix-Copia`, "warning");
+    }
 
     mostrarRespuesta = (e) => {
         let respuesta = e.target.nextElementSibling;

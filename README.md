@@ -1,21 +1,10 @@
 # Clon de Netflix con NodeJS, MongoDB y React
 
-## Información extra
+## Información importante
 
-    1. Añadir varias peliculas/series una vez el backend entre en produccion
+    Esto es un clon de la página web de Netflix, por lo que en ningun momento se escriba ninguna información importante.
+    
 
-### Cuenta
+### Recomendaciones
 
-    1. Campos (id, usuarios, password, email, date, facturacion)
-    2. Email tiene que ser unico
-    3. Se puede cambiar el email (uno que no este en uso), password, y los usuarios
-    4. Un email, puede tener varios usuarios
-
-#### Usuarios
-
-    1. Campos (id, nombre, miLista)
-    2. Se puede cambiar tanto el nombre como la lista
-
-### Peliculas
-
-    1.Campos (id, title, year, información, géneros, temporadas, imagen)
+    Como he dicho anteriormente, es un clon de su página web, no de su aplicación. Por lo que si quereis verlo de la mejor manera posible, ver la página en un ordenador.

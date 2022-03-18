@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 import Footer from './Footer';
 import Header from './Header';
@@ -93,34 +94,48 @@ class ModificarCuenta extends Component {
     }
 
     eliminarCuenta = () => {
-        if (window.confirm("Estas seguro??")) {
-            axios.delete(this.url + 'cuentas/' + this.state.cuenta2._id)
-                .then(res => {
-                    this.setState({
-                        redirect: true
+        swal({
+            title: "¿Estas seguro?",
+            text: "Una vez eliminada, no podras recuperarla",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axios.delete(this.url + 'cuentas/' + this.state.cuenta2._id)
+                        .then(res => {
+                            this.setState({
+                                redirect: true
+                            });
+                        });
+                    swal("Success, la cuenta ha sido eliminada", {
+                        icon: "success",
                     });
-                });
-        }
+                } else {
+                    swal("Tu cuenta esta a salvo");
+                }
+            });
     }
 
     mostrarPassword = (e) => {
         let icono = e.target;
         let password = e.target.previousElementSibling;
 
-        if(password.type == "text"){
+        if (password.type == "text") {
             password.type = "password";
-        }else{
+        } else {
             password.type = "text";
         }
 
-        if(icono.classList.contains("fa-eye-slash")){
+        if (icono.classList.contains("fa-eye-slash")) {
             icono.classList.remove("fa-eye-slash");
             icono.classList.add("fa-eye");
-        }else{
+        } else {
             icono.classList.remove("fa-eye");
             icono.classList.add("fa-eye-slash");
         }
-        
+
     }
 
     render() {
