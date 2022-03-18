@@ -158,6 +158,9 @@ var controller = {
             newPelicula.informacion = body.informacion;
             newPelicula.generos = body.generos;
             newPelicula.duracion = body.duracion;
+            newPelicula.tipo = body.tipo;
+            newPelicula.edad = body.edad;
+            newPelicula.novedad = body.novedad;
 
             newPelicula.save((err, pelicula) => {
                 if (err || !pelicula) {

@@ -82,24 +82,24 @@ class RowPeliculas extends Component {
     }
 
     getPeliculas = () => {
-        if(this.props.pelicula){
+        if (this.props.pelicula) {
             axios(this.url + 'peliculasTipo/pelicula')
-            .then(res => {
-                // console.log(res.data.messsage);
-                this.setState({
-                    peliculas: res.data.message
+                .then(res => {
+                    // console.log(res.data.messsage);
+                    this.setState({
+                        peliculas: res.data.message
+                    });
                 });
-            });
-        }else{
+        } else {
             axios(this.url + 'peliculasTipo/serie')
-            .then(res => {
-                // console.log(res.data.messsage);
-                this.setState({
-                    peliculas: res.data.message
+                .then(res => {
+                    // console.log(res.data.messsage);
+                    this.setState({
+                        peliculas: res.data.message
+                    });
                 });
-            });
         }
-        
+
     }
 
     addMiLista = (e) => {
@@ -107,19 +107,19 @@ class RowPeliculas extends Component {
 
         let miLista = this.state.miLista;
         miLista.push(e.target.id);
-        
+
         let data = {
-            "miLista" : miLista
+            "miLista": miLista
         };
-        
+
         axios.put(this.url + 'usuario/' + this.state.usuario, data)
-            .then(res =>{
+            .then(res => {
                 // console.log(res.data);
                 this.setState({
                     redirect: true
                 });
             })
-            .catch(err =>{});
+            .catch(err => { });
 
         let add = e.target;
         let quitar = e.target.nextElementSibling;
@@ -131,32 +131,67 @@ class RowPeliculas extends Component {
     quitarMiLista = (e) => {
         // alert("quitar");
         let miLista = this.state.miLista;
-        miLista.splice(miLista.indexOf(e.target.id),1);
-        
+        miLista.splice(miLista.indexOf(e.target.id), 1);
+
         let data = {
-            "miLista" : miLista
+            "miLista": miLista
         };
-        
+
         axios.put(this.url + 'usuario/' + this.state.usuario, data)
-            .then(res =>{
+            .then(res => {
                 this.setState({
                     redirect: true
                 });
             })
-            .catch(err =>{});
-        
+            .catch(err => { });
+
         let add = e.target;
         let quitar = e.target.previousElementSibling;
 
         add.classList.toggle("miListaShow");
         quitar.classList.toggle("miListaShow");
 
-        
+
+    }
+
+    desplazarIzquierda = (e) => {
+        // ! https://code.tutsplus.com/es/tutorials/create-the-perfect-carousel-part-1--cms-29481
+        const fila = e.target.nextElementSibling;
+
+        // const distancia = fila.scrollLeft;
+
+        // fila.style.transform = `translateX(${distancia}px)`;
+        // fila.style.transform = `translateX(0vw)`;
+        const {left} = fila.getBoundingClientRect();
+        let resultado = left + 1600;
+
+        if(resultado > 5){
+            resultado = 5;
+        }
+
+        fila.style.transform = `translateX(${resultado}px)`;
+    }
+
+    desplazarDerecha = (e) => {
+        const fila = e.target.previousElementSibling;
+
+        /* const distancia = -fila.offsetWidth;
+
+        fila.style.transform = `translateX(${distancia}px)`; */
+        // fila.style.transform = `translateX(-90vw)`;
+        const {left} = fila.getBoundingClientRect();
+        let resultado = left - 1600;
+
+        if(resultado < -2939){
+            resultado = -2939;
+        }
+
+        fila.style.transform = `translateX(${resultado}px)`;
     }
 
     render() {
 
-        if(this.state.redirect) return <Navigate to={'/redirectUsuario/'+this.state.usuario} />
+        if (this.state.redirect) return <Navigate to={'/redirectUsuario/' + this.state.usuario} />
 
         if (this.props.peliculasMiLista) {
 
@@ -221,7 +256,30 @@ class RowPeliculas extends Component {
                             </span>
                         </h3>
                         <div className="iconosPrincipales">
-                            {miLista}
+                            {this.props.progress ?
+                                (
+                                    <div className="carouselContainer">
+                                        <div className="carousel">
+                                            {miLista}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <React.Fragment>
+                                        <button className="flecha-izquierda" onClick={this.desplazarIzquierda}>
+                                            <i className="fa-solid fa-angle-left"></i>
+                                        </button>
+                                        <div className="carouselContainer">
+                                            <div className="carousel">
+                                                {miLista}
+                                            </div>
+                                        </div>
+                                        <button className="flecha-derecha" onClick={this.desplazarDerecha}>
+                                            <i className="fa-solid fa-angle-right"></i>
+                                        </button>
+                                    </React.Fragment>
+                                )
+                            }
+
                         </div>
                     </div>
                 )
@@ -302,7 +360,17 @@ class RowPeliculas extends Component {
                             </span>
                         </h3>
                         <div className="iconosPrincipales">
-                            {miLista}
+                            <button className="flecha-izquierda" onClick={this.desplazarIzquierda}>
+                                <i className="fa-solid fa-angle-left"></i>
+                            </button>
+                            <div className="carouselContainer">
+                                <div className="carousel">
+                                    {miLista}
+                                </div>
+                            </div>
+                            <button className="flecha-derecha" onClick={this.desplazarDerecha}>
+                                <i className="fa-solid fa-angle-right"></i>
+                            </button>
                         </div>
                     </div>
                 )
