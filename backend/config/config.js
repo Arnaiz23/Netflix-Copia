@@ -9,5 +9,6 @@ module.exports = {
     DB_DATABASE: process.env.db_database || 'api',
     DB_USERNAME: process.env.db_username || 'root',
     DB_PASSWORD: process.env.db_password || 'root',
-    llave: "estoesnetflixbb"
+    llave: "estoesnetflixbb",
+    password: "mMSs4nlLELQeC4sO"
 }

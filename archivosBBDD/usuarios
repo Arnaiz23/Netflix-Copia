@@ -1,0 +1,4 @@
+{"_id":{"$oid":"622ba1e075ee26ffad938a11"},"nombre":"Adrian","miLista":[{"$oid":"622a75d6375614e7174d74ce"},{"$oid":"622b3f3e872083aa65df45ed"},{"$oid":"6230fd392545376ca168f880"},{"$oid":"6230fc712545376ca168f86f"},{"$oid":"6234dc4293579a8ff725fd0c"},{"$oid":"6234dcc293579a8ff725fd6b"},{"$oid":"6234dd5493579a8ff725fd6e"},{"$oid":"6234de0c93579a8ff725fd71"}],"__v":0}
+{"_id":{"$oid":"622ba5713a1e58f1efb0bab3"},"nombre":"Laura","miLista":[{"$oid":"622a768b375614e7174d74d1"}],"__v":0}
+{"_id":{"$oid":"623393464251dc4c02f5f957"},"nombre":"prueba","miLista":[],"__v":0}
+{"_id":{"$oid":"623393ba4251dc4c02f5f960"},"nombre":"prueba1","miLista":[],"__v":0}

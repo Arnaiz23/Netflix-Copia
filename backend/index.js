@@ -1,12 +1,14 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var port = '3900';
+var port = process.env.PORT || 3900;
 var app = require('./app');
+
+const config = require('./config/config');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://adrian:adrian@mongodb/api' , {useNewUrlParser : true} , () => {
+mongoose.connect(`mongodb+srv://arnaiz23:${config.password}@netflixclone.1l58o.mongodb.net/api?retryWrites=true&w=majority` , {useNewUrlParser : true} , () => {
     console.log("Conectado a la base de datos correctamente");
 
     app.listen(port, () =>{

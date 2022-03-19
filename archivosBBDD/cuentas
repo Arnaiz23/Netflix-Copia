@@ -1,0 +1,1 @@
+{"_id":{"$oid":"622b5071f139f460db618bde"},"usuarios":[{"$oid":"622ba1e075ee26ffad938a11"},{"$oid":"622ba5713a1e58f1efb0bab3"}],"password":"$2a$10$dUgMU5ZrnTPdQEsTU9uMqeCoo57Xvx8OvTF.fYvbK6865Rlrsp4m.","email":"prueba@gmail.com","facturacion":"1234 5678 9012 3456","date":{"$date":"2022-03-11T13:36:49.243Z"},"__v":0}

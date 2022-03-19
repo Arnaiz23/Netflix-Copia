@@ -1,3 +1,3 @@
 export var config = {
-    url: "http://localhost:3900/api/"
+    url: "https://clone-of-netflix.herokuapp.com/api/"
 }
